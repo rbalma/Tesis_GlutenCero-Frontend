@@ -1,0 +1,30 @@
+/* Notices Section
+--------------------------------*/
+
+.body {
+  background: #fff;
+  color: #444;
+  font-family: "Open Sans", sans-serif;
+}
+
+#lts_sec {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
+  
+  .lts_pst>img {
+    width: 100%;
+  }
+  
+  .lts_pst h2 {
+    padding-top: 20px;
+    color: #333333;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  
+  .lts_pst p {
+    color: #858796;
+  }
+  

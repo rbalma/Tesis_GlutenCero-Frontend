@@ -1,0 +1,24 @@
+
+footer {
+    background: #0d58ba;
+  }
+  
+  footer .copyright {
+    text-align: center;
+    padding-top: 30px;
+    color: #f1f7ff;
+  }
+  
+  footer .credits {
+    text-align: center;
+    font-size: 13px;
+    color: #f1f7ff;
+  }
+  
+  footer .credits a {
+    color: #bfddfe;
+  }
+  
+  footer .credits a:hover {
+    color: #f1f7ff;
+  }
