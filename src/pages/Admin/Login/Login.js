@@ -22,6 +22,7 @@ export default function Login() {
     });
   }
 
+
   const login = async e => {
     e.preventDefault();
     const result = await signInApi(inputs);
@@ -31,15 +32,18 @@ export default function Login() {
         message: result.message
       });
     } else {
-      const { accesToken, refreshToken } = result;
-      localStorage.setItem(ACCESS_TOKEN, accesToken);
+      const { accessToken, refreshToken } = result;
+      localStorage.setItem(ACCESS_TOKEN, accessToken);
       localStorage.setItem(REFRESH_TOKEN, refreshToken);
 
       notification["success"]({
         message: "Login correcto."
       });
 
-      window.location.href = "/";
+      setTimeout( () => {
+        window.location.href = "/";
+    }, 1500)
+    
     }
 
   }
@@ -70,11 +74,11 @@ export default function Login() {
 
                 <form className="user" onChange={changeForm} onSubmit={login}>
                   <div className="form-group">
-                    <input type="email" className="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp"
+                    <input type="email" className="form-control form-control-user" aria-describedby="emailHelp"
                     name="email" placeholder="Correo electrónico" />
                   </div>
                   <div className="form-group">
-                    <input type="password" className="form-control form-control-user" id="exampleInputPassword" 
+                    <input type="password" className="form-control form-control-user" 
                     name="password"
                     placeholder="Contraseña" />
                   </div>
