@@ -8,10 +8,10 @@ export default function Home() {
     <footer className="footer-back">
     <div className="container">
       <div className="copyright">
-        &copy; Copyright <strong>NewBiz</strong>. All Rights Reserved
+        &copy; Copyright <strong>Gluten Cero</strong>. 2020
       </div>
       <div className="credits">
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Desarrollado por <a href="https://www.institucional.frc.utn.edu.ar/sistemas/Areas/Academica/ProyectoFinal/Proyectos/Detalle.asp?id=113"> estudiantes UTN FRC</a>
       </div>
     </div>
   </footer>
