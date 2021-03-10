@@ -1,8 +1,8 @@
 import React from "react";
 import Logo from '../../../assets/img/logoGlutenCero.png';
+import { FaAngleDown } from "react-icons/fa";
 
 import './NavBar.css';
-
 
 
 export default function NavBar() {
@@ -23,25 +23,16 @@ export default function NavBar() {
           <li><a href="#about">Recetas</a></li>
           <li><a href="#services">Mapa</a></li>
           <li><a href="#portfolio">Foro</a></li>
-          <li><a href="#team">Productos</a></li>
-          <li className="drop-down"><a href="/">Suscribirse</a>
-            <ul>
+          <li className="drop-down"><a href="#team">Productos<FaAngleDown/></a>
+          <ul>
               <li><a href="/">Drop Down 1</a></li>
-              <li className="drop-down"><a href="/">Drop Down 2</a>
-                <ul>
-                  <li><a href="/">Deep Drop Down 1</a></li>
-                  <li><a href="/..">Deep Drop Down 2</a></li>
-                  <li><a href="/">Deep Drop Down 3</a></li>
-                  <li><a href="/">Deep Drop Down 4</a></li>
-                  <li><a href="/">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
               <li><a href="/">Drop Down 3</a></li>
               <li><a href="/">Drop Down 4</a></li>
               <li><a href="/">Drop Down 5</a></li>
             </ul>
           </li>
-          <li><a href="#contact">Ingresar</a></li>
+          <li><a href="/">Suscribirse</a></li>
+          <li><a href="/admin/login">Ingresar</a></li>
         </ul>
       </nav>
       
@@ -50,6 +41,3 @@ export default function NavBar() {
     </>
   );
 }
-
-
-

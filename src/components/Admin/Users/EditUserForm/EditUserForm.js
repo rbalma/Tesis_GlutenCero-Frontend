@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import {Avatar, Form, Input, Select, Button, Row, Col, notification} from "antd";
-import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons';
+import { FaUser, FaRegEnvelope, FaLock } from "react-icons/fa";
 import { useDropzone } from "react-dropzone";
 import NoAvatar from "../../../../assets/img/no-avatar.png";
 import { updateUserApi, uploadAvatarApi, getAvatarApi } from "../../../../api/user";
@@ -151,7 +151,7 @@ function EditForm(props) {
           <Col span={12}>
             <Form.Item>
               <Input
-                prefix={<UserOutlined />}
+                prefix={<FaUser />}
                 placeholder="Nombre"
                 value={userData.name}
                 onChange={e => setUserData({ ...userData, name: e.target.value })}
@@ -161,7 +161,7 @@ function EditForm(props) {
           <Col span={12}>
             <Form.Item>
               <Input
-                prefix={<UserOutlined />}
+                prefix={<FaUser />}
                 placeholder="Apellidos"
                 value={userData.lastname}
                 onChange={e =>
@@ -176,7 +176,7 @@ function EditForm(props) {
           <Col span={12}>
             <Form.Item>
               <Input
-                prefix={<MailOutlined />}
+                prefix={<FaRegEnvelope />}
                 placeholder="Correo electronico"
                 value={userData.email}
                 onChange={e =>
@@ -204,7 +204,7 @@ function EditForm(props) {
           <Col span={12}>
             <Form.Item>
               <Input
-                prefix={<LockOutlined />}
+                prefix={<FaLock />}
                 type="password"
                 placeholder="Contraseña"
                 onChange={e =>
@@ -216,7 +216,7 @@ function EditForm(props) {
           <Col span={12}>
             <Form.Item>
               <Input
-                prefix={<LockOutlined />}
+                prefix={<FaLock />}
                 type="password"
                 placeholder="Repetir contraseña"
                 onChange={e =>

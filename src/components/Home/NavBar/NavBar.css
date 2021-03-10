@@ -138,11 +138,7 @@ a:focus {
     color: #007bff;
   }
   
-  .main-nav .drop-down > a:after {
-    content: "\f107";
-    font-family: FontAwesome;
-    padding-left: 10px;
-  }
+
   
   .main-nav .drop-down .drop-down ul {
     top: 0;
@@ -271,14 +267,16 @@ a:focus {
   }
   
 
-  @media (max-width: 991px) {
+  @media (max-width: 800px) {
     #header {
       height: 65px;
       padding: 0px 0;
     }
   
-    #header .logo h1 {
-      font-size: 28px;
-      padding: 8px 0;
+    /* nav ul li {
+      display: block;
+      float: none;
+      border-bottom: 1px solid rgb(32, 30, 30);
     }
+   */
   }

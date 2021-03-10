@@ -36,7 +36,7 @@ export function minLengthValidation(inputData, minLength) {
   // Validar formato del password
   export function passwordValidation(inputData) {
     // eslint-disable-next-line no-useless-escape
-    const passValid = /^(?=.*[A-Z])(?=.*[!@#$&])(?=.*[0-9])(?=.*[a-z]).{8,15}$/; // como mínimo debe contener un carácter especial (!@#$&), un número, una letra mayúscula, una minúscula y entre 8 a 15 caracteres.
+    const passValid = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,15}$/; // como mínimo debe contener un carácter especial (!@#$&), un número, una letra mayúscula, una minúscula y entre 8 a 15 caracteres.
     const { value } = inputData;
   
     removeClassErrorSuccess(inputData);

@@ -2,12 +2,14 @@ import React from "react";
 import { Button } from "antd";
 import Logo from "../../../assets/img/logoBlanco.png";
 import {logout} from '../../../api/auth';
-import { MenuFoldOutlined, PoweroffOutlined } from '@ant-design/icons';
+import { FaPowerOff, FaOutdent, FaIndent } from "react-icons/fa";
 
 import "./MenuTop.scss";
 
 export default function MenuTop(props) {
   const { menuCollapsed, setMenuCollapsed } = props;
+
+  let Icontype = menuCollapsed ? FaIndent : FaOutdent;
 
   const logoutUser = () => {
     logout();
@@ -24,13 +26,12 @@ export default function MenuTop(props) {
           alt="Agustin Navarro Galdon"
         />
         <Button type="link" onClick={() => setMenuCollapsed(!menuCollapsed)}>
-        {/* <Icon type={menuCollapsed ? "menu-unfold" : "menu-fold"} /> */}
-        <MenuFoldOutlined />
+        <Icontype />
         </Button>
       </div>
       <div className="menu-top__right">
         <Button type="link" onClick={logoutUser}>
-        <PoweroffOutlined />
+        <FaPowerOff />
         </Button>
       </div>
     </div>

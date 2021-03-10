@@ -8,7 +8,7 @@ import {
   Col,
   notification
 } from "antd";
-import {UserOutlined, MailOutlined, LockOutlined} from '@ant-design/icons';
+import { FaUser, FaRegEnvelope, FaLock } from "react-icons/fa";
 import { signUpAdminApi } from "../../../../api/user";
 import { getAccessTokenApi } from "../../../../api/auth";
 
@@ -77,7 +77,7 @@ function AddForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<UserOutlined />}
+              prefix={<FaUser />}
               placeholder="Nombre"
               value={userData.name}
               onChange={e => setUserData({ ...userData, name: e.target.value })}
@@ -87,7 +87,7 @@ function AddForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<UserOutlined />}
+              prefix={<FaUser />}
               placeholder="Apellidos"
               value={userData.lastname}
               onChange={e =>
@@ -102,7 +102,7 @@ function AddForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<MailOutlined />}
+              prefix={<FaRegEnvelope />}
               placeholder="Correo electronico"
               value={userData.email}
               onChange={e =>
@@ -130,7 +130,7 @@ function AddForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<LockOutlined />}
+              prefix={<FaLock />}
               type="password"
               placeholder="Contraseña"
               value={userData.password}
@@ -143,7 +143,7 @@ function AddForm(props) {
         <Col span={12}>
           <Form.Item>
             <Input
-              prefix={<LockOutlined />}
+              prefix={<FaLock />}
               type="password"
               placeholder="Repetir contraseña"
               value={userData.repeatPassword}

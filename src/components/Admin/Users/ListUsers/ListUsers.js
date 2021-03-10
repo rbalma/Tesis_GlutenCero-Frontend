@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, List, Avatar, Button, Tooltip, Modal as ModalAntd, notification } from "antd";
-import { EditOutlined, CheckOutlined, StopOutlined, DeleteOutlined } from '@ant-design/icons';
+import { FaEdit, FaBan, FaTrashAlt, FaCheckCircle } from "react-icons/fa";
+
 import NoAvatar from "../../../../assets/img/no-avatar.png";
 import Modal from "../../../Modal";
 import EditUserForm from "../EditUserForm";
@@ -167,17 +168,17 @@ function UserActive(props) {
             actions={[
                 <Tooltip title="Editar Usuario">
                 <Button type="primary" onClick={() => editUser(user)} >
-                    <EditOutlined />
+                    <FaEdit />
                 </Button>
                 </Tooltip>,
                 <Tooltip title="Desactivar Usuario">
                 <Button type="danger" onClick={desactivateUser} >
-                    <StopOutlined />
+                    <FaBan />
                 </Button>
                 </Tooltip>,
                 <Tooltip title="Eliminar Usuario">
                 <Button type="danger" onClick={showDeleteConfirm} >
-                    <DeleteOutlined />
+                    <FaTrashAlt />
                 </Button>
                 </Tooltip>
             ]}
@@ -278,7 +279,7 @@ function UserInactive(props) {
                             type="primary"
                             onClick={activateUser}
                         >
-                            <CheckOutlined />
+                            <FaCheckCircle  />
                         </Button>
                         </Tooltip>,
                         <Tooltip title="Eliminar Usuario">
@@ -286,7 +287,7 @@ function UserInactive(props) {
                             type="danger"
                             onClick={showDeleteConfirm}
                         >
-                            <DeleteOutlined />
+                            <FaTrashAlt />
                         </Button>
                         </Tooltip>
                     ]}

@@ -4,6 +4,7 @@ import Logo from '../../../assets/img/logoGlutenCero.png';
 import {emailValidation, minLengthValidation, passwordValidation} from '../../../utils/formValidation'
 import {notification} from 'antd';
 import {signUpApi} from '../../../api/user';
+import { FaGoogle, FaFacebook } from "react-icons/fa";
 
 export default function RegisterForm () {
 
@@ -154,14 +155,13 @@ export default function RegisterForm () {
                       defaultValue={inputs.email}
                        />
                     </div>
-                    <div className="form-group row">
-                      <div className="col-sm-6 mb-3 mb-sm-0">
+                    <div className="form-group">
                         <input type="password" name="password" className="form-control form-control-user" placeholder="Contraseña"
-                        onChange={inputValidation}
-                        defaultValue={inputs.password}
+                        onChange={inputValidation} defaultValue={inputs.password}
                          />
-                      </div>
-                      <div className="col-sm-6">
+                         <small className="info"> Debe contener número, letra mayúscula y minúscula. Entre 8 a 15 caracteres</small>
+                      
+                      <div className="form-group mt-3">
                         <input type="password" name="repeatPassword" className="form-control form-control-user" placeholder="Repetir contraseña"
                         onChange={inputValidation}
                         defaultValue={inputs.repeatPassword}
@@ -173,10 +173,10 @@ export default function RegisterForm () {
                     </button>
                     <hr />
                     <a href="index.html" className="btn btn-google btn-user btn-block">
-                      <i className="fab fa-google fa-fw"></i> Registrarse con Google
+                      Registrarse con Google <FaGoogle />
                     </a>
                     <a href="index.html" className="btn btn-facebook btn-user btn-block">
-                      <i className="fab fa-facebook-f fa-fw"></i> Registrarse con Facebook
+                      Registrarse con Facebook <FaFacebook />
                     </a>
                   </form>
                   <hr />

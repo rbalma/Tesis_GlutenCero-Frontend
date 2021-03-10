@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Layout, Menu } from "antd";
-import {UserOutlined, MenuOutlined, BookOutlined, MessageOutlined} from '@ant-design/icons';
+import { FaMapMarkedAlt, FaUserCircle, FaClipboardList, FaBookReader } from "react-icons/fa";
 
 import "./MenuSider.scss";
 
@@ -25,26 +25,26 @@ function MenuSider(props) {
         </Menu.Item> */}
         <Menu.Item key="/admin/users">
           <Link to="/admin/users">
-          <UserOutlined />
-            <span className="nac-text">Usuarios</span>
+          <FaUserCircle className="ml-3"/>
+            <span className="nac-text ml-4">Usuarios</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="/admin/menu">
           <Link to="/admin/menu">
-          <MenuOutlined />
-            <span className="nac-text">Menú</span>
+          <FaClipboardList className="ml-3" />
+            <span className="nac-text ml-4">Recetas</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="/admin/courses">
           <Link to="/admin/courses">
-            <BookOutlined />
-            <span className="nac-text">Cursos</span>
+            <FaBookReader className="ml-3"/>
+            <span className="nac-text ml-4">Noticias</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="/admin/blog">
           <Link to="/admin/blog">
-          <MessageOutlined />
-            <span className="nac-text">Blog</span>
+          <FaMapMarkedAlt className="ml-3"/>
+            <span className="nac-text ml-4">Blog</span>
           </Link>
         </Menu.Item>
       </Menu>
