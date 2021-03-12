@@ -44,7 +44,7 @@ function MenuSider(props) {
         <Menu.Item key="/admin/blog">
           <Link to="/admin/blog">
           <FaMapMarkedAlt className="ml-3"/>
-            <span className="nac-text ml-4">Blog</span>
+            <span className="nac-text ml-4">Mapa</span>
           </Link>
         </Menu.Item>
       </Menu>

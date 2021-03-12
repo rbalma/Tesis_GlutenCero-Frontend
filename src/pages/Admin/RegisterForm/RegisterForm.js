@@ -4,7 +4,7 @@ import Logo from '../../../assets/img/logoGlutenCero.png';
 import {emailValidation, minLengthValidation, passwordValidation} from '../../../utils/formValidation'
 import {notification} from 'antd';
 import {signUpApi} from '../../../api/user';
-import { FaGoogle, FaFacebook } from "react-icons/fa";
+
 
 export default function RegisterForm () {
 
@@ -129,7 +129,7 @@ export default function RegisterForm () {
                 <div className="p-5">
                   <div className="text-center">
                     <a href="/"><img src={Logo} sizes="10" alt="logo" className="img-fluid pequeña" title="Inicio" /></a>
-                    <h1 className="h4 text-gray-900 mb-4">Crea una cuenta</h1>
+                    <h1 className="h4 text-gray-900 mb-4 text-lg-left">Crea Una Cuenta</h1>
                   </div>
 
 
@@ -171,13 +171,6 @@ export default function RegisterForm () {
                     <button className="btn btn-primary btn-user btn-block">
                       Registrarse
                     </button>
-                    <hr />
-                    <a href="index.html" className="btn btn-google btn-user btn-block">
-                      Registrarse con Google <FaGoogle />
-                    </a>
-                    <a href="index.html" className="btn btn-facebook btn-user btn-block">
-                      Registrarse con Facebook <FaFacebook />
-                    </a>
                   </form>
                   <hr />
                   <div className="text-center">

@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import {signInApi} from '../../../api/user';
 import {ACCESS_TOKEN, REFRESH_TOKEN} from '../../../utils/constants';
 import {getAccessTokenApi} from "../../../api/auth";
+import { FaGoogle, FaFacebook } from "react-icons/fa";
 
 import '../RegisterForm/RegisterForm.css';
 import { notification } from "antd";
@@ -68,7 +69,7 @@ export default function Login() {
               <div className="p-5">
                 <div className="text-center">
                   <a href="/"><img src={Logo} sizes="10" alt="logo" className="img-fluid pequeña" title="Inicio" /></a>
-                  <h1 className="h4 text-gray-900 mb-4">Ingresa tu cuenta</h1>
+                  <h1 className="h4 text-gray-900 mb-4 text-left">Ingresa Tu Cuenta</h1>
                 </div>
 
 
@@ -89,10 +90,10 @@ export default function Login() {
 
                   <hr />
                   <a href="index.html" className="btn btn-google btn-user btn-block">
-                    <i className="fab fa-google fa-fw"></i> Ingresar con Google
+                    <FaGoogle size="18px" className="mr-2" /> Ingresar con Google
                   </a>
                   <a href="index.html" className="btn btn-facebook btn-user btn-block">
-                    <i className="fab fa-facebook-f fa-fw"></i> Ingresar con Facebook
+                    <FaFacebook size="20px" className="mr-2" />  Ingresar con Facebook
                   </a>
                 </form>
                 <hr />
