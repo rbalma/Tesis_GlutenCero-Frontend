@@ -15,7 +15,7 @@ function MenuSider(props) {
         theme="dark"
         mode="inline"
         defaultSelectedKeys={[location.pathname]}
-        //defaultSelectedKeys={["/admin/users"]}
+        //defaultSelectedKeys={["/admin"]}
       >
         {/* <Menu.Item key="/admin">
           <Link to="/admin">
@@ -23,26 +23,26 @@ function MenuSider(props) {
             <span className="nav-text">Home</span>
           </Link>
         </Menu.Item> */}
-        <Menu.Item key="/admin/users">
-          <Link to="/admin/users">
+        <Menu.Item key="/admin">
+          <Link to="/admin">
           <FaUserCircle className="ml-3"/>
             <span className="nac-text ml-4">Usuarios</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key="/admin/menu">
-          <Link to="/admin/menu">
+        <Menu.Item key="/admin/recetas">
+          <Link to="/admin/recetas">
           <FaClipboardList className="ml-3" />
             <span className="nac-text ml-4">Recetas</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key="/admin/courses">
-          <Link to="/admin/courses">
+        <Menu.Item key="/admin/noticias">
+          <Link to="/admin/noticias">
             <FaBookReader className="ml-3"/>
             <span className="nac-text ml-4">Noticias</span>
           </Link>
         </Menu.Item>
-        <Menu.Item key="/admin/blog">
-          <Link to="/admin/blog">
+        <Menu.Item key="/admin/mapa">
+          <Link to="/admin/mapa">
           <FaMapMarkedAlt className="ml-3"/>
             <span className="nac-text ml-4">Mapa</span>
           </Link>

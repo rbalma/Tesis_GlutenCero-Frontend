@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import { Route, Switch, Redirect} from 'react-router-dom';
 import { Layout} from 'antd';
-import useAuth from '../hooks/useAuth';
-import MenuTop from '../components/Admin/MenuTop';
-import MenuSider from '../components/Admin/MenuSider';
-import AdminSignIn from "../pages/Admin/Login";
+import useAuth from '../../hooks/useAuth';
+import MenuTop from '../../components/Admin/MenuTop';
+import MenuSider from '../../components/Admin/MenuSider';
+import AdminSignIn from "../../pages/Login";
 
 import "./LayoutAdmin.scss";
 
@@ -21,8 +21,9 @@ export default  function LayoutBasic(props) {
     if (!user && !isLoading){
         return(
             <>
-                <Route path="/admin/login" component={AdminSignIn} />
-                <Redirect to="/admin/login" /> 
+                <Route path="/login" component={AdminSignIn} />
+                <Redirect to="/login" /> 
+                
             </>
         );
     }

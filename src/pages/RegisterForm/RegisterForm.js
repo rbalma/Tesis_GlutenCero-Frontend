@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import './RegisterForm.css';
-import Logo from '../../../assets/img/logoGlutenCero.png';
-import {emailValidation, minLengthValidation, passwordValidation} from '../../../utils/formValidation'
+import Logo from '../../assets/img/logoGlutenCero.png';
+import {emailValidation, minLengthValidation, passwordValidation} from '../../utils/formValidation'
 import {notification} from 'antd';
-import {signUpApi} from '../../../api/user';
+import {signUpApi} from '../../api/user';
+import {Link} from 'react-router-dom';
 
 
 export default function RegisterForm () {
@@ -128,7 +129,7 @@ export default function RegisterForm () {
               <div className="col-lg-7">
                 <div className="p-5">
                   <div className="text-center">
-                    <a href="/"><img src={Logo} sizes="10" alt="logo" className="img-fluid pequeña" title="Inicio" /></a>
+                    <Link to={"/"}><img src={Logo} sizes="10" alt="logo" className="img-fluid pequeña" title="Inicio" /></Link>
                     <h1 className="h4 text-gray-900 mb-4 text-lg-left">Crea Una Cuenta</h1>
                   </div>
 
@@ -174,10 +175,10 @@ export default function RegisterForm () {
                   </form>
                   <hr />
                   <div className="text-center">
-                    <a className="small" href="forgot-password.html">Olvidaste la contraseña</a>
+                    <Link to={"/"} className="small" >Olvidaste la contraseña</Link>
                   </div>
                   <div className="text-center">
-                  <p className="small">¿Ya tienes una cuenta? <a href="/admin/login"><span> Ingresa ahora</span></a></p>
+                  <p className="small">¿Ya tienes una cuenta? <Link to={"/login"}><span> Ingresa ahora</span></Link></p>
                   </div>
                 </div>
               </div>

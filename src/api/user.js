@@ -25,6 +25,7 @@ export function signUpApi(data) {
     });
 }
 
+
 export function signInApi(data) {
   const url = `${basePath}/${apiVersion}/sign-in`;
   const params = {
@@ -40,8 +41,6 @@ export function signInApi(data) {
       return response.json();
     })
     .then(result => {
-      console.log(result);
-
       return result;
     })
     .catch(err => {

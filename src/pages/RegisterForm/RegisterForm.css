@@ -1,3 +1,11 @@
+.password-icon {
+  position:absolute;
+  top: 12px;
+  right: 18px;
+  cursor: pointer;
+}
+
+
 img.pequeña {
   width: 150px;
   height: 100px;
@@ -160,13 +168,13 @@ img.pequeña {
 }
 
 .bg-login-image {
-  background: url("../../../assets/img/login.jpg");
+  background: url("../../assets/img/login.jpg");
   background-position: center;
   background-size: cover;
 }
 
 .bg-register-image {
-  background: url("../../../assets/img/register.jpg");
+  background: url("../../assets/img/register.jpg");
   background-position: center;
   background-size: cover;
 }

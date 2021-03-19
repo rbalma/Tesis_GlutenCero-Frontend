@@ -1,10 +1,11 @@
 import React, {useState} from "react";
-import Logo from '../../../assets/img/logoGlutenCero.png';
+import Logo from '../../assets/img/logoGlutenCero.png';
 import { Redirect } from "react-router-dom";
-import {signInApi} from '../../../api/user';
-import {ACCESS_TOKEN, REFRESH_TOKEN} from '../../../utils/constants';
-import {getAccessTokenApi} from "../../../api/auth";
-import { FaGoogle, FaFacebook } from "react-icons/fa";
+import {signInApi} from '../../api/user';
+import {ACCESS_TOKEN, REFRESH_TOKEN} from '../../utils/constants';
+import {getAccessTokenApi} from "../../api/auth";
+import { FaGoogle, FaFacebook, FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import {Link} from 'react-router-dom';
 
 import '../RegisterForm/RegisterForm.css';
 import { notification } from "antd";
@@ -49,14 +50,18 @@ export default function Login() {
 
   }
 
+  // Contraseña Visible
+  const [visible, setVisible] = useState(false);
+  const Icon = visible ? FaRegEye : FaRegEyeSlash;
+  const InputType = visible ? "text" : "password";
+
 
   if (getAccessTokenApi()) {
     return <Redirect to="/" />;
   }
 
+
   return (
-    
-    
 <div className="bg-gradient-primary">
   <div className="container">
     <div className="row justify-content-center">
@@ -68,7 +73,7 @@ export default function Login() {
             <div className="col-lg-6">
               <div className="p-5">
                 <div className="text-center">
-                  <a href="/"><img src={Logo} sizes="10" alt="logo" className="img-fluid pequeña" title="Inicio" /></a>
+                  <Link to={"/"}><img src={Logo} sizes="10" alt="logo" className="img-fluid pequeña" title="Inicio" /></Link>
                   <h1 className="h4 text-gray-900 mb-4 text-left">Ingresa Tu Cuenta</h1>
                 </div>
 
@@ -78,10 +83,14 @@ export default function Login() {
                     <input type="email" className="form-control form-control-user" aria-describedby="emailHelp"
                     name="email" placeholder="Correo electrónico" />
                   </div>
-                  <div className="form-group">
-                    <input type="password" className="form-control form-control-user" 
+                  <div className="form-group form-row">
+                  <div className="col">
+                    <input type={InputType} className="form-control form-control-user" 
                     name="password"
-                    placeholder="Contraseña" />
+                    placeholder="Contraseña" /> 
+                     <i className="password-icon" onClick={() => setVisible(!visible)} ><Icon size="20px" /></i>
+                    </div>
+                   
                   </div>
                   <button className="btn btn-primary btn-user btn-block">
                     Ingresar
@@ -89,19 +98,19 @@ export default function Login() {
 
 
                   <hr />
-                  <a href="index.html" className="btn btn-google btn-user btn-block">
+                  <Link to={"/"} className="btn btn-google btn-user btn-block">
                     <FaGoogle size="18px" className="mr-2" /> Ingresar con Google
-                  </a>
-                  <a href="index.html" className="btn btn-facebook btn-user btn-block">
+                  </Link>
+                  <Link to={"/"} className="btn btn-facebook btn-user btn-block">
                     <FaFacebook size="20px" className="mr-2" />  Ingresar con Facebook
-                  </a>
+                  </Link>
                 </form>
                 <hr />
                 <div className="text-center">
-                  <a className="small" href="forgot-password.html">¿Olvidaste la contraseña?</a>
+                  <Link to={"/"} className="small" >¿Olvidaste la contraseña?</Link>
                 </div>
                 <div className="text-center">
-                  <p className="small" href="register.html">¿Eres nuevo en Gluten Cero? <a href="/singup"><span>Únete ahora</span></a></p>
+                  <p className="small" href="register.html">¿Eres nuevo en Gluten Cero? <Link to={"/singup"}><span>Únete ahora</span></Link></p>
                 </div>
               </div>
             </div>

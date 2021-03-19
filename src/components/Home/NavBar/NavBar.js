@@ -1,14 +1,26 @@
 import React from "react";
+import {logout} from '../../../api/auth';
 import Logo from '../../../assets/img/logoGlutenCero.png';
 import { FaSignInAlt, FaHome, FaTasks, FaUtensils, FaShoppingCart, FaMapMarkerAlt, FaRegCommentDots, FaRegStar, FaClipboardList, FaDollarSign, FaAddressCard, FaSignOutAlt, FaWrench } from "react-icons/fa";
-import  ImgPerfil  from "../../../assets/img/no-avatar.png";
+import NoAvatar from "../../../assets/img/no-avatar.png";
+import {Link} from 'react-router-dom';
+
+
+import useAuth from '../../../hooks/useAuth';
 
 import './NavBar.css';
 
 
 export default function NavBar() {
 
-  let user = false;
+  const {user, isLoading} = useAuth();
+
+    const logoutUser = () => {
+      logout();
+      //window.location.reload();
+      window.location.href = "/";
+    }
+
 
   if (!user){
     return (
@@ -17,7 +29,7 @@ export default function NavBar() {
     <div className="container">
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div className="logo">
-    <a className="navbar-brand" href="/"><img src={Logo} alt="logo" className="img-fluid pb-3" /></a>
+    <Link to={"/"} className="navbar-brand" ><img src={Logo} alt="logo" className="img-fluid pb-3" /></Link>
     </div>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
@@ -26,37 +38,37 @@ export default function NavBar() {
     <div className="navbar-nav mr-auto ml-auto ">
     <ul className="navbar-nav ">
       <li className="nav-item ">
-        <a className="nav-link" href="/#"><FaHome size="18px" className="mr-2 mb-1"/>Inicio<span className="sr-only">(current)</span></a>
+        <Link to={"/"} className="nav-link" ><FaHome size="18px" className="mr-2 mb-1"/>Inicio<span className="sr-only">(current)</span></Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/#"><FaTasks size="18px" className="mr-2 mb-1"/>Servicios</a>
+        <Link to={"/"} className="nav-link" ><FaTasks size="18px" className="mr-2 mb-1"/>Noticias</Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/#"><FaUtensils size="18px" className="mr-2 mb-1"/>Recetas</a>
+        <Link to={"/recetas"} className="nav-link" ><FaUtensils size="18px" className="mr-2 mb-1"/>Recetas</Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/#"><FaMapMarkerAlt size="18px" className="mr-2 mb-1"/>Mapa</a>
+        <Link to={"/mapa"} className="nav-link" ><FaMapMarkerAlt size="18px" className="mr-2 mb-1"/>Mapa</Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/#"><FaRegCommentDots size="18px" className="mr-2 mb-1"/>Foro</a>
+        <Link to={"/foro"} className="nav-link" ><FaRegCommentDots size="18px" className="mr-2 mb-1"/>Foro</Link>
       </li>
       <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+        <Link to={"#"} className="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
         <FaShoppingCart size="18px" className="mr-2 mb-1"/> Productos
-        </a>
+        </Link>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a className="dropdown-item" href="/"><FaClipboardList size="18px" className="mr-2 mb-1"/>Listado</a>
+          <Link to={"/listado-productos"} className="dropdown-item" ><FaClipboardList size="18px" className="mr-2 mb-1"/>Listado</Link>
           <div className="dropdown-divider"></div>
-          <a className="dropdown-item" href="/"><FaDollarSign size="18px" className="mr-2 mb-1"/>Oferta</a>
+          <Link to={"/oferta-productos"} className="dropdown-item" ><FaDollarSign size="18px" className="mr-2 mb-1"/>Oferta</Link>
         </div>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/#"><FaRegStar size="18px" className="mr-2 mb-1"/>Suscribirse</a>
+        <Link to={"/suscribirse"} className="nav-link" ><FaRegStar size="18px" className="mr-2 mb-1"/>Suscribirse</Link>
       </li>
     </ul>
     </div>
     <div className="d-flex flex-row justify-content-center">
-     <a className="btn login" href="/admin/login"><FaSignInAlt size="15px" /> Iniciar Sesión</a>
+     <Link to={"/login"} className="btn login" ><FaSignInAlt size="15px" /> Iniciar Sesión</Link>
     </div>
   </div>
   </nav>
@@ -66,14 +78,14 @@ export default function NavBar() {
     );
   }
 
-  if (user) {
+  if (user && !isLoading) {
     return (
       <>
     <header>
     <div className="container">
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div className="logo">
-    <a className="navbar-brand" href="/"><img src={Logo} alt="logo" className="img-fluid pb-3" /></a>
+    <Link to={"/"} className="navbar-brand" ><img src={Logo} alt="logo" className="img-fluid pb-3" /></Link>
     </div>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
@@ -82,45 +94,45 @@ export default function NavBar() {
     <div className="navbar-nav mr-auto ml-auto ">
     <ul className="navbar-nav ">
       <li className="nav-item ">
-        <a className="nav-link" href="/#"><FaHome size="18px" className="mr-2 mb-1"/>Inicio<span className="sr-only">(current)</span></a>
+        <Link to={"/"} className="nav-link"><FaHome size="18px" className="mr-2 mb-1"/>Inicio<span className="sr-only">(current)</span></Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/#"><FaTasks size="18px" className="mr-2 mb-1"/>Servicios</a>
+        <Link to="/" className="nav-link" ><FaTasks size="18px" className="mr-2 mb-1"/>Noticias</Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/#"><FaUtensils size="18px" className="mr-2 mb-1"/>Recetas</a>
+        <Link to={"/recetas"} className="nav-link"><FaUtensils size="18px" className="mr-2 mb-1"/>Recetas</Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/#"><FaMapMarkerAlt size="18px" className="mr-2 mb-1"/>Mapa</a>
+        <Link to={"/mapa"} className="nav-link"><FaMapMarkerAlt size="18px" className="mr-2 mb-1"/>Mapa</Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/#"><FaRegCommentDots size="18px" className="mr-2 mb-1"/>Foro</a>
+        <Link to={"/foro"} className="nav-link" ><FaRegCommentDots size="18px" className="mr-2 mb-1"/>Foro</Link>
       </li>
       <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+        <Link to={"#"} className="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
         <FaShoppingCart size="18px" className="mr-2 mb-1"/> Productos
-        </a>
+        </Link>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a className="dropdown-item" href="/"><FaClipboardList size="18px" className="mr-2 mb-1"/>Listado</a>
+          <Link to={"/listado-productos"} className="dropdown-item"><FaClipboardList size="18px" className="mr-2 mb-1"/>Listado</Link>
           <div className="dropdown-divider"></div>
-          <a className="dropdown-item" href="/"><FaDollarSign size="18px" className="mr-2 mb-1"/>Oferta</a>
+          <Link to={"/oferta-productos"} className="dropdown-item"><FaDollarSign size="18px" className="mr-2 mb-1"/>Oferta</Link>
         </div>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="/#"><FaRegStar size="18px" className="mr-2 mb-1"/>Suscribirse</a>
+        <Link to={"/suscribirse"} className="nav-link"><FaRegStar size="18px" className="mr-2 mb-1"/>Suscribirse</Link>
       </li>
     </ul>
     </div>
     <div className="d-flex flex-row justify-content-center">  
       <ol className="nav-item dropdown">
-    <a className="nav-link dropdown-toggle nombre" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-         <img alt="images" src={ImgPerfil} className="perfil"></img> Nombre
-        </a>
+    <Link to={"#"} className="nav-link dropdown-toggle nombre" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+         <img alt="images" src={NoAvatar} className="perfil" /> {user.name}
+        </Link>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a className="dropdown-item" href="/"><FaAddressCard size="18px" className="mr-2 mb-1"/>Perfil</a>
-          <a className="dropdown-item" href="/"><FaWrench size="18px" className="mr-2 mb-1"/>Configuración</a>
+          <Link to={"/perfil"} className="dropdown-item"><FaAddressCard size="18px" className="mr-2 mb-1"/>Perfil</Link>
+          <Link to={"/configuracion"} className="dropdown-item"><FaWrench size="18px" className="mr-2 mb-1"/>Configuración</Link>
           <div className="dropdown-divider"></div>
-          <a className="dropdown-item" href="/"><FaSignOutAlt size="18px" className="mr-2 mb-1"/>Salir</a>
+          <button className="dropdown-item" onClick={logoutUser}><FaSignOutAlt size="18px" className="mr-2 mb-1"/>Salir</button>
         </div>
       </ol> 
     </div>

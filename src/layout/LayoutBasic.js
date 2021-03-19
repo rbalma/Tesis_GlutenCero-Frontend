@@ -1,6 +1,9 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import { Layout } from 'antd';
+
+// Componentes
+import NavBar from '../components/Home/NavBar';
 import Footer from '../components/Home/Footer';
 
 
@@ -9,15 +12,15 @@ export default  function LayoutBasic(props) {
     const { Content} = Layout;
 
     return(
-        <Layout>
-            <h2>Menu Sider Basic User</h2>
-            <Layout>
+        <>
+              <NavBar />
+            
                 <Content>
                     <LoadRoutes routes={routes} />
                 </Content>
-            </Layout>
+           
             <Footer/>
-        </Layout>
+        </>
     )
 }
 

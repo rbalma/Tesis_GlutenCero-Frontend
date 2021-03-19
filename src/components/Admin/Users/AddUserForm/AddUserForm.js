@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  Form,
-  Input,
-  Select,
-  Button,
-  Row,
-  Col,
-  notification
-} from "antd";
+import { Form, Input, Select, Button, Row, Col, notification } from "antd";
 import { FaUser, FaRegEnvelope, FaLock } from "react-icons/fa";
 import { signUpAdminApi } from "../../../../api/user";
 import { getAccessTokenApi } from "../../../../api/auth";
@@ -15,11 +7,11 @@ import { getAccessTokenApi } from "../../../../api/auth";
 import "./AddUserForm.scss";
 
 export default function EditUserForm(props) {
-  const { setIsVisibleModal, setReloadUsers } = props;
+  const { history } = props;
   const [userData, setUserData] = useState({});
 
   const addUser = event => {
-    event.preventDefault();
+    //event.preventDefault();
 
     if (
       !userData.name ||
@@ -34,7 +26,7 @@ export default function EditUserForm(props) {
       });
     } else if (userData.password !== userData.repeatPassword) {
       notification["error"]({
-        message: "Las contraseñas tienen que ser iguale."
+        message: "Las contraseñas tienen que ser iguales."
       });
     } else {
       const accessToken = getAccessTokenApi();
@@ -44,9 +36,9 @@ export default function EditUserForm(props) {
           notification["success"]({
             message: response
           });
-          setIsVisibleModal(false);
-          setReloadUsers(true);
           setUserData({});
+           //Redireccionar
+           history.push('/admin');
         })
         .catch(err => {
           notification["error"]({
@@ -70,11 +62,15 @@ export default function EditUserForm(props) {
 function AddForm(props) {
   const { userData, setUserData, addUser } = props;
   const { Option } = Select;
+ 
+
 
   return (
-    <Form className="form-add" onSubmit={addUser}>
-      <Row gutter={24}>
-        <Col span={12}>
+    <>
+    <h1 className="titulo text-uppercase mt-4">Nuevo Usuario</h1>
+    <Form className="form-add" onFinish={addUser}>
+      <Row gutter={16} justify="center">
+        <Col xs={16} sm={16} md={8} lg={8} xl={8}>
           <Form.Item>
             <Input
               prefix={<FaUser />}
@@ -84,7 +80,7 @@ function AddForm(props) {
             />
           </Form.Item>
         </Col>
-        <Col span={12}>
+        <Col xs={16} sm={16} md={8} lg={8} xl={8}>
           <Form.Item>
             <Input
               prefix={<FaUser />}
@@ -98,8 +94,8 @@ function AddForm(props) {
         </Col>
       </Row>
 
-      <Row gutter={24}>
-        <Col span={12}>
+      <Row gutter={16} justify="center">
+        <Col xs={16} sm={16} md={8} lg={8} xl={8}>
           <Form.Item>
             <Input
               prefix={<FaRegEnvelope />}
@@ -111,7 +107,7 @@ function AddForm(props) {
             />
           </Form.Item>
         </Col>
-        <Col span={12}>
+        <Col xs={16} sm={16} md={8} lg={8} xl={8}>
           <Form.Item>
             <Select
               placeholder="Selecióna un rol"
@@ -119,17 +115,16 @@ function AddForm(props) {
               value={userData.role}
             >
               <Option value="admin">Administrador</Option>
-              <Option value="editor">Editor</Option>
-              <Option value="reviwer">Revisor</Option>
+              <Option value="user">Usuario</Option>
             </Select>
           </Form.Item>
         </Col>
       </Row>
 
-      <Row gutter={24}>
-        <Col span={12}>
+      <Row gutter={12} justify="center">
+        <Col xs={16} sm={16} md={8} lg={8} xl={8}>
           <Form.Item>
-            <Input
+            <Input.Password
               prefix={<FaLock />}
               type="password"
               placeholder="Contraseña"
@@ -140,9 +135,9 @@ function AddForm(props) {
             />
           </Form.Item>
         </Col>
-        <Col span={12}>
+        <Col xs={16} sm={16} md={8} lg={8} xl={8}>
           <Form.Item>
-            <Input
+            <Input.Password
               prefix={<FaLock />}
               type="password"
               placeholder="Repetir contraseña"
@@ -161,5 +156,6 @@ function AddForm(props) {
         </Button>
       </Form.Item>
     </Form>
+    </>
   );
 }

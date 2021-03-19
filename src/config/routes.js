@@ -1,18 +1,20 @@
 // Layout
-import LayoutAdmin from '../layout/LayoutAdmin';
+import LayoutAdmin from '../layout/Admin/LayoutAdmin';
 import LayoutBasic from '../layout/LayoutBasic';
 
 // Admin Pages
-import Admin from '../pages/Admin';
-import Login from '../pages/Admin/Login';
 import AdminUsers from '../pages/Admin/Users';
+import AddUser from '../components/Admin/Users/AddUserForm';
+
 
 // Pages
 import Home from '../pages/Home';
-import Register from '../pages/Admin/RegisterForm';
+import Register from '../pages/RegisterForm';
+import Login from '../pages/Login';
 
-//Other
-import Error404 from '../pages/Error404';
+//Error
+import Error404 from '../pages/Error404/Error404';
+
 
 const routes = [
     {
@@ -22,17 +24,12 @@ const routes = [
         routes: [
             {
                 path: "/admin",
-                component: Admin,
-                exact: true
-            },
-            {
-                path: "/admin/login",
-                component: Login,
-                exact: true
-            },
-            {
-                path: "/admin/users",
                 component: AdminUsers,
+                exact: true
+            },
+            {
+                path: "/admin/adduser",
+                component: AddUser,
                 exact: true
             },
             {
@@ -43,6 +40,11 @@ const routes = [
     {
         path: "/singup",
         component: Register,
+        exact: true
+    },
+    {
+        path: "/login",
+        component: Login,
         exact: true
     },
     {

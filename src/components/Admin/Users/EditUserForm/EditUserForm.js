@@ -46,7 +46,7 @@ export default function EditUserForm(props) {
 
     
   const updateUser = e => {
-      e.preventDefault();
+      //e.preventDefault();
       const token = getAccessTokenApi();
       let userUpdate = userData;
   
@@ -146,7 +146,7 @@ function EditForm(props) {
     const { Option } = Select;
 
     return (
-      <Form className="form-edit" onSubmit={updateUser}>
+      <Form className="form-edit" onFinish={updateUser}>
         <Row gutter={24}>
           <Col span={12}>
             <Form.Item>
@@ -193,8 +193,7 @@ function EditForm(props) {
                 value={userData.role}
               >
                 <Option value="admin">Administrador</Option>
-                <Option value="editor">Editor</Option>
-                <Option value="reviewr">Revisor</Option>
+                <Option value="user">Usuario</Option>
               </Select>
             </Form.Item>
           </Col>

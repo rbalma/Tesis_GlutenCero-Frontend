@@ -5,6 +5,7 @@ import {logout} from '../../../api/auth';
 import { FaPowerOff, FaOutdent, FaIndent } from "react-icons/fa";
 
 import "./MenuTop.scss";
+import { Link } from "react-router-dom";
 
 export default function MenuTop(props) {
   const { menuCollapsed, setMenuCollapsed } = props;
@@ -20,11 +21,13 @@ export default function MenuTop(props) {
   return (
     <div className="menu-top">
       <div className="menu-top__left">
+      <Link to="/">
         <img
           className="menu-top__left-logo"
           src={Logo}
           alt="Agustin Navarro Galdon"
         />
+      </Link>
         <Button type="link" onClick={() => setMenuCollapsed(!menuCollapsed)}>
         <Icontype />
         </Button>
