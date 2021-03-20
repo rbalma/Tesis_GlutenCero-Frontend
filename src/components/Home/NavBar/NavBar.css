@@ -6,9 +6,12 @@
 }
 
 .navbar {
-  padding: .1rem 1rem !important;
+  padding: 0rem 1rem !important;
 }
   
+.dropdown-menu {
+  font-size: 14px;
+}
 
 header {
     position: absolute;
@@ -18,15 +21,14 @@ header {
 
 
 .navbar-brand {
-  font-weight: 800;
+  font-weight: 100;
   text-transform: uppercase;
   font-size: 2em;
   color:royalblue;
 }
 
 .nav-item{
-  font-weight: 500;
-  font-family: "Montserrat", sans-serif;
+  font-weight: 450;
   padding-top: 10px;
 }
 
@@ -76,16 +78,14 @@ header {
   max-height: 35px;
   margin-right: 10px;
   border-radius: 150px;
-  padding: auto;
+
 }
 
 .nombre {
-  font-size: 12px;
-  margin-top: 10px;
-  margin-right: 10px;
+  font-size: 14px;
 }
 
-@media screen and (max-width:800px){
+@media screen and (max-width:990px){
 
   header nav ul li {
     border-bottom: 1px solid #007bff;
@@ -96,5 +96,9 @@ header {
     color: #fff;
     background-color: rgb(184, 183, 183);
   }
+
+.login {
+  margin: 10px 10px;
+}
 
 }

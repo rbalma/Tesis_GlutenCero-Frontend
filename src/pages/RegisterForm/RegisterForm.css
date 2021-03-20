@@ -5,6 +5,24 @@
   cursor: pointer;
 }
 
+.password-icon2 {
+  cursor: pointer;
+  position:absolute;
+  right: 80px;
+  top: 365px;
+}
+
+.password-icon3 {
+  cursor: pointer;
+  position:absolute;
+  right: 80px;
+  top: 455px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
 
 img.pequeña {
   width: 150px;
@@ -21,6 +39,10 @@ img.pequeña {
   background-color: #4e73df;
   background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 .text-gray-900 {
@@ -115,8 +137,15 @@ img.pequeña {
   }
 }
 
+.abs-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
 .card {
-  position: relative;
+  position: center;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -258,7 +287,6 @@ small,
     line-height: 1.5;
     color: #858796;
     text-align: left;
-    background-color: #fff;
   }
   
   [tabindex="-1"]:focus {

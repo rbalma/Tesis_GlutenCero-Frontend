@@ -7,7 +7,7 @@ export default function Home() {
   return (
 
     <section id="contact" className="body">
-      <div className="container-fluid">
+      <div className="container">
 
         <div className="section-header">
           <h3>Información de Contacto</h3>

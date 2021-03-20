@@ -1,7 +1,7 @@
 import React from "react";
 import {logout} from '../../../api/auth';
 import Logo from '../../../assets/img/logoGlutenCero.png';
-import { FaSignInAlt, FaHome, FaTasks, FaUtensils, FaShoppingCart, FaMapMarkerAlt, FaRegCommentDots, FaRegStar, FaClipboardList, FaDollarSign, FaAddressCard, FaSignOutAlt, FaWrench } from "react-icons/fa";
+import { FaSignInAlt, FaTasks, FaUtensils, FaShoppingCart, FaMapMarkerAlt, FaRegCommentDots, FaRegStar, FaClipboardList, FaDollarSign, FaAddressCard, FaSignOutAlt, FaWrench } from "react-icons/fa";
 import NoAvatar from "../../../assets/img/no-avatar.png";
 import {Link} from 'react-router-dom';
 
@@ -26,8 +26,9 @@ export default function NavBar() {
     return (
       <>
     <header>
-    <div className="container">
+    
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div className="container">
     <div className="logo">
     <Link to={"/"} className="navbar-brand" ><img src={Logo} alt="logo" className="img-fluid pb-3" /></Link>
     </div>
@@ -37,9 +38,6 @@ export default function NavBar() {
   <div className="collapse navbar-collapse" id="navbarNavDropdown">
     <div className="navbar-nav mr-auto ml-auto ">
     <ul className="navbar-nav ">
-      <li className="nav-item ">
-        <Link to={"/"} className="nav-link" ><FaHome size="18px" className="mr-2 mb-1"/>Inicio<span className="sr-only">(current)</span></Link>
-      </li>
       <li className="nav-item">
         <Link to={"/"} className="nav-link" ><FaTasks size="18px" className="mr-2 mb-1"/>Noticias</Link>
       </li>
@@ -67,12 +65,12 @@ export default function NavBar() {
       </li>
     </ul>
     </div>
-    <div className="d-flex flex-row justify-content-center">
+    <div className="d-flex flex-row ">
      <Link to={"/login"} className="btn login" ><FaSignInAlt size="15px" /> Iniciar Sesión</Link>
     </div>
   </div>
-  </nav>
   </div>
+  </nav>
   </header>
       </>
     );
@@ -82,8 +80,8 @@ export default function NavBar() {
     return (
       <>
     <header>
-    <div className="container">
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div className="container">
     <div className="logo">
     <Link to={"/"} className="navbar-brand" ><img src={Logo} alt="logo" className="img-fluid pb-3" /></Link>
     </div>
@@ -93,9 +91,6 @@ export default function NavBar() {
   <div className="collapse navbar-collapse" id="navbarNavDropdown">
     <div className="navbar-nav mr-auto ml-auto ">
     <ul className="navbar-nav ">
-      <li className="nav-item ">
-        <Link to={"/"} className="nav-link"><FaHome size="18px" className="mr-2 mb-1"/>Inicio<span className="sr-only">(current)</span></Link>
-      </li>
       <li className="nav-item">
         <Link to="/" className="nav-link" ><FaTasks size="18px" className="mr-2 mb-1"/>Noticias</Link>
       </li>
@@ -130,6 +125,7 @@ export default function NavBar() {
         </Link>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <Link to={"/perfil"} className="dropdown-item"><FaAddressCard size="18px" className="mr-2 mb-1"/>Perfil</Link>
+          <div className="dropdown-divider"></div>
           <Link to={"/configuracion"} className="dropdown-item"><FaWrench size="18px" className="mr-2 mb-1"/>Configuración</Link>
           <div className="dropdown-divider"></div>
           <button className="dropdown-item" onClick={logoutUser}><FaSignOutAlt size="18px" className="mr-2 mb-1"/>Salir</button>
@@ -137,8 +133,8 @@ export default function NavBar() {
       </ol> 
     </div>
   </div>
-  </nav>
   </div>
+  </nav>
   </header>
       </>
     );

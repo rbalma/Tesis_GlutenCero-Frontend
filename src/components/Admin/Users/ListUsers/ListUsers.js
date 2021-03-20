@@ -23,6 +23,7 @@ export default function ListUsers(props){
    
     
     return(
+        <>
         <div className="list-users">
 
           <div className="list-users__header">
@@ -63,6 +64,7 @@ export default function ListUsers(props){
                    {modalContent}
                 </Modal> 
         </div>
+        </>
     );
 
 }
@@ -78,6 +80,7 @@ function UsersActive(props){
     }
 
     return (
+        <>
         <List
         className="users-active"
         itemLayout="horizontal"
@@ -90,6 +93,7 @@ function UsersActive(props){
           />
         )}
       />
+      </>
     );
   }
 
@@ -154,7 +158,7 @@ function UserActive(props) {
     }
 
     return (
-
+        <>
         <List.Item
             actions={[
                 <Tooltip title="Editar Usuario">
@@ -183,6 +187,7 @@ function UserActive(props) {
                         description={user.email}
         />
         </List.Item>
+        </>
 
     )
 }
@@ -192,6 +197,7 @@ function UsersInactive(props){
     const {usersInactive, setReloadUsers } = props;
 
     return (
+        <>
         <List
           className="users-active"
           itemLayout="horizontal"
@@ -200,7 +206,9 @@ function UsersInactive(props){
             <UserInactive user={user} setReloadUsers={setReloadUsers} />
           )}
         />
+        </>
       );
+     
     }
 
 function UserInactive(props) {
@@ -263,6 +271,7 @@ function UserInactive(props) {
 
 
     return (
+        <>
         <List.Item
                     actions={[
                         <Tooltip title="Activar Usuario">
@@ -292,6 +301,7 @@ function UserInactive(props) {
                         description={user.email}
                     />
                 </List.Item>
+                </>
     )
 
 }

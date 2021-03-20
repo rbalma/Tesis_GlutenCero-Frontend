@@ -146,6 +146,7 @@ function EditForm(props) {
     const { Option } = Select;
 
     return (
+      <>
       <Form className="form-edit" onFinish={updateUser}>
         <Row gutter={24}>
           <Col span={12}>
@@ -232,6 +233,7 @@ function EditForm(props) {
           </Button>
         </Form.Item>
       </Form>
+      </>
     );
   }
   
