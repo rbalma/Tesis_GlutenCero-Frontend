@@ -10,9 +10,7 @@ export default function Home() {
       <div className="row">
         <div className="col-lg-12 col-md-12 col-sm-12 col-xs12 ">
           <header className="section-header">
-            <h3>Últimas noticias</h3>
-            <p></p>
-
+            <h3>Últimas Noticias</h3>
           </header>
         </div>
         <div className="col-lg-4 col-md-4 col-sm-12">
