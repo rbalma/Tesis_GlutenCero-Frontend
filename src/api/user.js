@@ -48,6 +48,25 @@ export function signInApi(data) {
     });
 }
 
+export function getUserById(userId) {
+  const url = `${basePath}/${apiVersion}/get-user/${userId}`
+  const params = {
+    method: "GET"
+  };
+
+  return fetch(url, params)
+  .then(response => {
+    return response.json();
+  })
+  .then(result => {
+    return result;
+  })
+  .catch(err => {
+    return err.message;
+  });
+
+}
+
 export function getUsersApi(token) {
   const url = `${basePath}/${apiVersion}/users`;
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import { Layout } from 'antd';
+import useAuth from '../hooks/useAuth';
+
 
 // Componentes
 import NavBar from '../components/Home/NavBar';
@@ -11,9 +13,12 @@ export default  function LayoutBasic(props) {
     const { routes } = props;
     const { Content} = Layout;
 
+    const {user} = useAuth();
+   
+
     return(
         <>
-              <NavBar />
+              <NavBar user={user} />
             
                 <Content>
                     <LoadRoutes routes={routes} />

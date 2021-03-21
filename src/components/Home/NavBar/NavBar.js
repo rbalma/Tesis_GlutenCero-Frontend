@@ -6,16 +6,14 @@ import NoAvatar from "../../../assets/img/no-avatar.png";
 import {Link} from 'react-router-dom';
 
 
-import useAuth from '../../../hooks/useAuth';
 
 import './NavBar.css';
 
 
-export default function NavBar() {
+export default function NavBar({user}) {
 
-  const {user, isLoading} = useAuth();
 
-    const logoutUser = () => {
+     const logoutUser = () => {
       logout();
       //window.location.reload();
       window.location.href = "/";
@@ -76,7 +74,9 @@ export default function NavBar() {
     );
   }
 
-  if (user && !isLoading) {
+  if (user) {
+    
+
     return (
       <>
     <header>
