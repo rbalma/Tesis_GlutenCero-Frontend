@@ -1,30 +1,28 @@
 /* Notices Section
 --------------------------------*/
 
-.body {
-  background: #fff;
-  color: #444;
-  font-family: "Open Sans", sans-serif;
+
+.swiper-container {
+  background-color: #fff;
+  height: 100%;
+  width: 80%;
+  box-shadow: 4px 4px 5px rgb(0, 0, 0, 0.2);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
-#lts_sec {
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-  
-  
-  .lts_pst>img {
-    width: 100%;
-  }
-  
-  .lts_pst h2 {
-    padding-top: 20px;
-    color: #333333;
-    font-size: 14px;
-    text-transform: uppercase;
-  }
-  
-  .lts_pst p {
-    color: #858796;
-  }
-  
+.notices {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 15px;
+}
+
+
+.size {
+  width: 18rem;
+  margin-left: 50px;
+}
