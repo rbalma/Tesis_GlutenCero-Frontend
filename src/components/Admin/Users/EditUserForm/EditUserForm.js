@@ -115,17 +115,24 @@ function UploadAvatar(props) {
       }
     }, [avatar]);
 
-    const onDrop = useCallback(
+    const onDropAccepted = useCallback(
         acceptedFiles => {
             const file = acceptedFiles[0];
             setAvatar({ file, preview: URL.createObjectURL(file)});
         }, [setAvatar]
     );
 
+    const onDropRejected = () => {
+      notification["error"]({
+        message: "Formato de la imagen no válido. Usar JPG - PNG."
+      });
+    }
+
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         accept: "image/jpeg, image/png",
         noKeyboard: true,
-        onDrop
+        onDropAccepted,
+        onDropRejected
       });
     
       return (

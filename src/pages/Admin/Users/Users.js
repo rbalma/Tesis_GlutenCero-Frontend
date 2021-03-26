@@ -3,7 +3,7 @@ import {getAccessTokenApi} from "../../../api/auth";
 import {getUsersActiveApi} from "../../../api/user";
 import ListUsers from "../../../components/Admin/Users/ListUsers";
 
-import "./Users.scss";
+
 
 export default function Users() {
 
@@ -23,8 +23,8 @@ export default function Users() {
     }, [token, reloadUsers]);
 
     return (
-        <div className="users">
+        <>
             <ListUsers usersActive={usersActive} usersInactive={usersInactive} setReloadUsers={setReloadUsers} />
-        </div>
+        </>
     )
 }

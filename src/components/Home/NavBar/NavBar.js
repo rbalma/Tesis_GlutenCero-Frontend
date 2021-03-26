@@ -37,7 +37,7 @@ export default function NavBar({user}) {
     <div className="navbar-nav mr-auto ml-auto ">
     <ul className="navbar-nav ">
       <li className="nav-item">
-        <Link to={"/"} className="nav-link" ><FaTasks size="18px" className="mr-2 mb-1"/>Noticias</Link>
+        <Link to={"/#notices"} className="nav-link" ><FaTasks size="18px" className="mr-2 mb-1"/>Noticias</Link>
       </li>
       <li className="nav-item">
         <Link to={"/recetas"} className="nav-link" ><FaUtensils size="18px" className="mr-2 mb-1"/>Recetas</Link>
@@ -92,7 +92,7 @@ export default function NavBar({user}) {
     <div className="navbar-nav mr-auto ml-auto ">
     <ul className="navbar-nav ">
       <li className="nav-item">
-        <Link to="/" className="nav-link" ><FaTasks size="18px" className="mr-2 mb-1"/>Noticias</Link>
+        <Link to={"/#notices"} className="nav-link" ><FaTasks size="18px" className="mr-2 mb-1"/>Noticias</Link>
       </li>
       <li className="nav-item">
         <Link to={"/recetas"} className="nav-link"><FaUtensils size="18px" className="mr-2 mb-1"/>Recetas</Link>

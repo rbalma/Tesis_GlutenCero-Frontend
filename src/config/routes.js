@@ -5,6 +5,8 @@ import LayoutBasic from '../layout/LayoutBasic';
 // Admin Pages
 import AdminUsers from '../pages/Admin/Users';
 import AddUser from '../components/Admin/Users/AddUserForm';
+import AdminNotices from '../pages/Admin/Notices';
+import AddNotice from '../components/Admin/Notices/AddNoticeForm';
 
 
 
@@ -32,6 +34,16 @@ const routes = [
             {
                 path: "/admin/adduser",
                 component: AddUser,
+                exact: true
+            },
+            {
+                path: "/admin/noticias",
+                component: AdminNotices,
+                exact: true
+            },
+            {
+                path: "/admin/noticias/addNoticia",
+                component: AddNotice,
                 exact: true
             },
             {

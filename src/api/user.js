@@ -1,5 +1,6 @@
 import { basePath, apiVersion } from "./config";
 
+
 export function signUpApi(data) {
   const url = `${basePath}/${apiVersion}/sign-up`;
   const params = {

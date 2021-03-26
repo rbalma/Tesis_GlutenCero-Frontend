@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './WelcomeSection.css';
 
 
@@ -11,7 +12,7 @@ export default function Home() {
         </h1>
         <h2>Forma parte de nuestra comunidad</h2>
         <div className="d-flex">
-          <a href="/singup" className="btn-get-started scrollto">Registrarse</a>
+          <Link to={"/singup"} className="btn-get-started scrollto">Registrarse</Link>
         </div>
       </div>
     </section>
