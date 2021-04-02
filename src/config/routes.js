@@ -15,6 +15,10 @@ import AddNotice from '../components/Admin/Notices/AddNoticeForm';
 import Home from '../pages/Home';
 import Register from '../pages/RegisterForm';
 import Login from '../pages/Login';
+import SearchRecipe from '../pages/Recipe/SearchRecipe';
+import AddRecipeForm from '../pages/Recipe/AddRecipeForm';
+import ViewRecipe from '../pages/Recipe/ViewRecipe';
+
 
 //Error
 import Error404 from '../pages/Error404/Error404';
@@ -69,6 +73,21 @@ const routes = [
             {
                 path: "/",
                 component: Home,
+                exact: true
+            },
+            {
+                path: "/recetas",
+                component: SearchRecipe,
+                exact: true
+            },
+            {
+                path: "/recetas/nueva",
+                component: AddRecipeForm,
+                exact: true
+            },
+            {
+                path: "/recetas/nueva/id",
+                component: ViewRecipe,
                 exact: true
             },
             {

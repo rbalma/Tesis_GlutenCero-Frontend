@@ -1,0 +1,29 @@
+.formulario{
+    font-weight: 500;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background: #4B79A1;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #283E51, #4B79A1);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #283E51, #4B79A1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.form-container {
+    background: #fff;
+    border-radius: 20px;
+    padding: 30px 50px;
+    min-width: 500px;
+    box-shadow: 0 15px 16px .17px rgba(0, 0, 0, 0.05);
+}
+
+.upload-image {
+    margin-top: 50px;
+    display: table;
+      margin: 0 auto;
+      border: 2px solid #9a9a9a;
+      border-style: dashed;
+      padding: 10px;
+}

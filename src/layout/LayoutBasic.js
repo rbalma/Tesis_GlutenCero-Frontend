@@ -8,6 +8,9 @@ import useAuth from '../hooks/useAuth';
 import NavBar from '../components/Home/NavBar';
 import Footer from '../components/Home/Footer';
 
+// Estilos
+import './LayoutBasic.css';
+
 
 export default  function LayoutBasic(props) {
     const { routes } = props;
@@ -18,13 +21,15 @@ export default  function LayoutBasic(props) {
 
     return(
         <>
+
               <NavBar user={user} />
-            
-                <Content>
+
+                <Content className="contenido">
                     <LoadRoutes routes={routes} />
                 </Content>
            
             <Footer/>
+
         </>
     )
 }

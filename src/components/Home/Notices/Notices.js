@@ -24,44 +24,54 @@ export default function Notices(props) {
 
   const data = notices;
 
-  return (
-    <section id="notices" className="container mt-5 mb-4">
-      <h1 className="mb-4">Últimas Noticias</h1>
-      <Swiper
-        breakpoints={{
-          // when window width is >= 640px
-          640: {
-            width: 640,
-            slidesPerView: 1,
+  if (data) {
+
+    return (
+      <section id="notices" className="container mt-5 mb-4">
+        <h1 className="mb-4">Últimas Noticias</h1>
+        <Swiper
+          breakpoints={{
+            // when window width is >= 640px
+            640: {
+              width: 640,
+              slidesPerView: 1,
+            },
+            // when window width is >= 768px
+            768: {
+              width: 768,
+              slidesPerView: 2,
+            },
+            1024: {
+            width: 1024,
+            slidesPerView: 3,
+            spaceBetween: 20
           },
-          // when window width is >= 768px
-          768: {
-            width: 768,
-            slidesPerView: 2,
-          },
-          1024: {
-          width: 1024,
-          slidesPerView: 3,
-          spaceBetween: 20
-        },
-        }}
-        navigation
-        pagination={{ clickable: true }}
-      >
+          }}
+          navigation
+          pagination={{ clickable: true }}
+        >
+  
+          {data.map(noticia => (
+            <SwiperSlide key={noticia._id}>
+            <Notice notice={noticia}/>
+            </SwiperSlide>
+  
+          ))}
+        </Swiper>
+      </section>
+    );
+  } 
+  
+  if (!data){
 
-        {data.map(noticia => (
-          <SwiperSlide key={noticia._id}>
-          <Notice notice={noticia}/>
-          </SwiperSlide>
+    return (
+      <h1>No hay noticias</h1>
+    )
 
-        ))
-        }
+  }
 
-          
-      </Swiper>
-
-    </section>
-  );
+  
+  
 
 
 
@@ -88,7 +98,9 @@ export default function Notices(props) {
       
       <div className="card" style={{width:"300px"}}>
     
-        <img className="card-img-top" src={image} alt="noticia" />
+       <div className="overflow">
+       <img className="card-img-top" src={image} alt="noticia" />
+       </div>
         <div className="card-body">
           <h5 className="card-title  text-justify">{notice.title}</h5>
           <p className="card-text">
