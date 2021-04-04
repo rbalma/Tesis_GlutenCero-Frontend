@@ -1,17 +1,40 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {logout} from '../../../api/auth';
 import Logo from '../../../assets/img/logoGlutenCero.png';
-import { FaSignInAlt, FaTasks, FaUtensils, FaShoppingCart, FaMapMarkerAlt, FaRegCommentDots, FaRegStar, FaClipboardList, FaDollarSign, FaAddressCard, FaSignOutAlt, FaWrench } from "react-icons/fa";
+import { FaSignInAlt, FaTasks, FaUtensils, FaShoppingCart, FaMapMarkerAlt, FaRegCommentDots, FaRegStar, FaAddressCard, FaSignOutAlt, FaWrench } from "react-icons/fa";
 import NoAvatar from "../../../assets/img/no-avatar.png";
 import {Link} from 'react-router-dom';
+import { getUserById, getAvatarApi } from '../../../api/user';
+import useAuth from '../../../hooks/useAuth';
 
 
 
 import './NavBar.css';
 
 
-export default function NavBar({user}) {
+export default function NavBar() {
+    const {user} = useAuth();
+    const [idAvatar, setIdavatar]= useState(null);
+    const [avatar, setAvatar] = useState(null);
 
+    useEffect(() => {
+      if(user){
+        fetchUser();
+      }
+      if(idAvatar) {
+        getAvatarApi(idAvatar).then(response => {
+          setAvatar(response);
+        });
+      }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user, idAvatar])
+
+
+    const fetchUser = () => {
+      getUserById(user.id).then(data => {
+        setIdavatar(data.user.avatar);
+      });
+    }
 
      const logoutUser = () => {
       logout();
@@ -48,15 +71,10 @@ export default function NavBar({user}) {
       <li className="nav-item">
         <Link to={"/foro"} className="nav-link" ><FaRegCommentDots size="18px" className="mr-2 mb-1"/>Foro</Link>
       </li>
-      <li className="nav-item dropdown">
-        <Link to={"#"} className="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+      <li className="nav-item">
+        <Link to={"/listado-productos"} className="nav-link">
         <FaShoppingCart size="18px" className="mr-2 mb-1"/> Productos
         </Link>
-        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link to={"/listado-productos"} className="dropdown-item" ><FaClipboardList size="18px" className="mr-2 mb-1"/>Listado</Link>
-          <div className="dropdown-divider"></div>
-          <Link to={"/oferta-productos"} className="dropdown-item" ><FaDollarSign size="18px" className="mr-2 mb-1"/>Oferta</Link>
-        </div>
       </li>
       <li className="nav-item">
         <Link to={"/suscribirse"} className="nav-link" ><FaRegStar size="18px" className="mr-2 mb-1"/>Suscribirse</Link>
@@ -75,7 +93,6 @@ export default function NavBar({user}) {
   }
 
   if (user) {
-    
 
     return (
       <>
@@ -103,15 +120,10 @@ export default function NavBar({user}) {
       <li className="nav-item">
         <Link to={"/foro"} className="nav-link" ><FaRegCommentDots size="18px" className="mr-2 mb-1"/>Foro</Link>
       </li>
-      <li className="nav-item dropdown">
-        <Link to={"#"} className="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
+      <li className="nav-item">
+        <Link to={"#"} className="nav-link">
         <FaShoppingCart size="18px" className="mr-2 mb-1"/> Productos
         </Link>
-        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link to={"/listado-productos"} className="dropdown-item"><FaClipboardList size="18px" className="mr-2 mb-1"/>Listado</Link>
-          <div className="dropdown-divider"></div>
-          <Link to={"/oferta-productos"} className="dropdown-item"><FaDollarSign size="18px" className="mr-2 mb-1"/>Oferta</Link>
-        </div>
       </li>
       <li className="nav-item">
         <Link to={"/suscribirse"} className="nav-link"><FaRegStar size="18px" className="mr-2 mb-1"/>Suscribirse</Link>
@@ -121,7 +133,7 @@ export default function NavBar({user}) {
     <div className="d-flex flex-row justify-content-center">  
       <ol className="nav-item dropdown">
     <Link to={"#"} className="nav-link dropdown-toggle nombre" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-         <img alt="images" src={NoAvatar} className="perfil" /> {user.name}
+         <img alt="images" src={avatar ? avatar : NoAvatar} className="perfil" /> {user.name}
         </Link>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <Link to={"/perfil"} className="dropdown-item"><FaAddressCard size="18px" className="mr-2 mb-1"/>Perfil</Link>

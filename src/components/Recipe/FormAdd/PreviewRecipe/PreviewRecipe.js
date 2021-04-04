@@ -10,28 +10,28 @@ export default function PreviewRecipe(props) {
     <>
       <div id="content-wrapper">
         <section id="blog">
-          <div class="container">
-            <div class="gap"></div>
-            <div class="row">
-                <div class="blog">
-                  <div class="blog-item">
-                    <div class="blog-featured-image">
+          <div classNameName="container">
+            <div classNameName="gap"></div>
+            <div classNameName="row">
+                <div className="blog">
+                  <div className="blog-item">
+                    <div className="blog-featured-image">
                       <img
-                        class="img-responsive img-blog"
+                        className="img-responsive img-blog"
                         src="http://placehold.it/800x600"
                         alt=""
                       />
                     </div>
-                    <div class="blog-content">
-                      <h3 class="main-title">
+                    <div className="blog-content">
+                      <h3 className="main-title">
                         {recipe.title}
                       </h3>
-                      <div class="entry-meta">
+                      <div className="entry-meta">
                         <span>
-                          <i class="fa fa-folder"></i>Categoría: {recipe.category}
+                          <i className="fa fa-folder"></i>Categoría: {recipe.category}
                         </span>
                       </div>
-                      <p class="lead">
+                      <p className="lead">
                       {parse(recipe.ingredient)}
                       </p>
 
