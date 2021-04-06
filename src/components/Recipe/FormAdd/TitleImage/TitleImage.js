@@ -7,7 +7,7 @@ import '../../../../pages/Recipe/AddRecipeForm/AddRecipeForm.css';
 
 export default function TitleImage(props) {
     const {nextStep, setRecipe, recipe} = props;
-    const [avatar, setAvatar] = useState(null);
+
 
 
     const continues = e => {
@@ -18,17 +18,19 @@ export default function TitleImage(props) {
     return (
         <>
         <div className="form-container">
-        <h1 className="mb-5">Crea tu Receta</h1>
+        <h1 className="mb-4">Crea tu Receta</h1>
 
+        <label>Sube una imagen en formato png - jpg</label>
+            <UploadAvatar recipe={recipe} setRecipe={setRecipe} />
+        <div className="mt-2">
             <label>Ingresa un titulo</label>
             <Input
               name="title"
               onChange={(e) => setRecipe({ ...recipe, title: e.target.value })} value={recipe.title}
               style={{marginBottom:"18px"}}
             />
-
-             <label>Sube una imagen en formato png - jpg</label>
-            <UploadAvatar avatar={avatar} setAvatar={setAvatar} />
+        </div>
+         
       
         <div style={{paddingTop:"18px"}}>
         <Button type="primary" onClick={continues} >Siguiente</Button>
@@ -41,26 +43,27 @@ export default function TitleImage(props) {
 
 
 function UploadAvatar(props) {
-    const { avatar, setAvatar } = props;
+    const { recipe, setRecipe } = props;
     const [avatarUrl, setAvatarUrl] = useState(null);
 
     useEffect(() => {
-      if (avatar) {
-        if (avatar.preview) {
-          setAvatarUrl(avatar.preview);
+      if (recipe) {
+        if (recipe.preview) {
+          setAvatarUrl(recipe.preview);
         } else {
-          setAvatarUrl(avatar);
+          setAvatarUrl(NoAvatar);
         }
       } else {
         setAvatarUrl(null);
       }
-    }, [avatar]);
+    }, [recipe]);
 
     const onDropAccepted = useCallback(
         acceptedFiles => {
             const file = acceptedFiles[0];
-            setAvatar({ file, preview: URL.createObjectURL(file)});
-        }, [setAvatar]
+            setRecipe({ ...recipe, image: file, preview: URL.createObjectURL(file)});
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        }, [setRecipe]
     );
 
     const onDropRejected = () => {

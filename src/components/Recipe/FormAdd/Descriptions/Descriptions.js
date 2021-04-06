@@ -8,14 +8,14 @@ import PreviewRecipe from '../PreviewRecipe';
 
 export default function Descriptions(props) {
 
-    const {nextStep, prevStep, recipe, setRecipe} = props;
+    const {addRecipe, prevStep, recipe, setRecipe} = props;
     const [isVisibleModal, setIsVisibleModal] = useState(false);
     const [modalTitle, setModalTitle] = useState("");
     const [modalContent, setModalContent] = useState(null);
 
-    const continues = e => {
+    const newRecipe = e => {
         //e.preventDefault();
-        nextStep();
+        addRecipe();
     };
 
     const back = e => {
@@ -53,7 +53,7 @@ export default function Descriptions(props) {
           <Button type="primary" shape="round" onClick={() => viewRecipe(recipe)} >Vista Previa</Button>
           </div>
           <div className="col-4 text-right">
-          <Button type="primary" onClick={continues} >Finalizar</Button>
+          <Button type="primary" onClick={newRecipe} >Finalizar</Button>
           </div>
         </div>
 

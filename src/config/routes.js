@@ -7,6 +7,7 @@ import AdminUsers from '../pages/Admin/Users';
 import AddUser from '../components/Admin/Users/AddUserForm';
 import AdminNotices from '../pages/Admin/Notices';
 import AddNotice from '../components/Admin/Notices/AddNoticeForm';
+import AdminRecipes from '../pages/Admin/Recipes';
 
 
 
@@ -21,7 +22,7 @@ import ViewRecipe from '../pages/Recipe/ViewRecipe';
 
 
 //Error
-import Error404 from '../pages/Error404/Error404';
+import Error404 from '../pages/Error404';
 
 
 const routes = [
@@ -48,6 +49,11 @@ const routes = [
             {
                 path: "/admin/noticias/addNoticia",
                 component: AddNotice,
+                exact: true
+            },
+            {
+                path: "/admin/recetas",
+                component: AdminRecipes,
                 exact: true
             },
             {
@@ -86,7 +92,7 @@ const routes = [
                 exact: true
             },
             {
-                path: "/recetas/nueva/id",
+                path: "/recetas/:id",
                 component: ViewRecipe,
                 exact: true
             },

@@ -10,15 +10,15 @@ export default function PreviewRecipe(props) {
     <>
       <div id="content-wrapper">
         <section id="blog">
-          <div classNameName="container">
-            <div classNameName="gap"></div>
-            <div classNameName="row">
+          <div className="container">
+            <div className="gap"></div>
+            <div className="row">
                 <div className="blog">
                   <div className="blog-item">
                     <div className="blog-featured-image">
                       <img
                         className="img-responsive img-blog"
-                        src="http://placehold.it/800x600"
+                        src={recipe.preview}
                         alt=""
                       />
                     </div>

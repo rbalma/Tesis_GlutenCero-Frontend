@@ -1,21 +1,42 @@
-import React from 'react';
-import imagen from '../../../assets/img/slider.jpg';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import moment from 'moment';
+import { getImageApi } from '../../../api/recipe';
 
 import './Card.css';
 
-export default function Card() {
+export default function Card(props) {
+
+    const { recipe } = props;
+   
+    const [image, setImage] = useState(null);
+
+    const day = moment(recipe.date).format("DD");
+    const month = moment(recipe.date).format("MM");
+    const year = moment(recipe.date).format("YYYY");
+
+    useEffect(() => {
+      if (recipe.image) {
+        getImageApi(recipe.image).then(response => {
+            setImage(response);
+        });
+      } else {
+        setImage(null);
+      }
+    }, [recipe]);
+
     return (
         <div className="card text-center m-3 bg-dark animate__animated animate__fadeInUp">
             <div className="overflow">
-            <img src={imagen} alt="logo" className="card-img-top"/>
+            <img src={image} alt="logo" className="card-img-top"/>
             </div>
             <div className="card-body cuerpoTarjeta">
-                <h5 className="card-title text-light">TITULO</h5>
+                <h5 className="card-title text-light">{recipe.title}</h5>
                 <p className="textoTarjeta text-light">
-                sadafaf ap,sasfp paof,pasfapsfsa,ff,apsf,spf
+                
+                <small className="text-muted">{day}/{month}/{year}</small>
                 </p>
-                <Link to={"/"} className="btn btn-primary rounded-0" >
+                <Link to={`/recetas/${recipe._id}`} className="btn btn-primary rounded-0" >
                    Ir a la Receta
                 </Link>
             </div>

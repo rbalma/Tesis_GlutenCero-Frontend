@@ -3,8 +3,7 @@ import React, {useState, useEffect} from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination } from "swiper";
-
-import { getImageApi } from '../../../api/notice';
+import { getNoticesApi, getImageApi } from '../../../api/notice';
 
 import moment from 'moment';
 
@@ -18,14 +17,20 @@ import "./Notices.css";
 // install Swiper modules
 SwiperCore.use([Navigation, Pagination]);
 
-export default function Notices(props) {
 
-  const {notices} = props;
+export default function Notices() {
 
-  const data = notices;
+  const [notices, setNotices] = useState(null);
 
-  if (data) {
+  useEffect(() => {
+     getNoticesApi().then(res => {
+      setNotices(res.notices);
+    });
+  }, []);
 
+
+
+  if (notices) {
     return (
       <section id="notices" className="container mt-5 mb-4">
         <h1 className="mb-4">Últimas Noticias</h1>
@@ -51,21 +56,23 @@ export default function Notices(props) {
           pagination={{ clickable: true }}
         >
   
-          {data.map(noticia => (
+         {notices.map(noticia => (
             <SwiperSlide key={noticia._id}>
             <Notice notice={noticia}/>
             </SwiperSlide>
   
-          ))}
+          ))} 
         </Swiper>
       </section>
     );
   } 
   
-  if (!data){
+  if (!notices){
 
     return (
+      <section id="notices" className="container mt-5 mb-4">
       <h1>No hay noticias</h1>
+      </section>
     )
 
   }
