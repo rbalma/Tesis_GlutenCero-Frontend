@@ -24,13 +24,14 @@ export default function Notices() {
 
   useEffect(() => {
      getNoticesApi().then(res => {
-      setNotices(res.notices);
+      setNotices(res.noticesStored.docs);
     });
   }, []);
 
-
+  
 
   if (notices) {
+    
     return (
       <section id="notices" className="container mt-5 mb-4">
         <h1 className="mb-4">Últimas Noticias</h1>

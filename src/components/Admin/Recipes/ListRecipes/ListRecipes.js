@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Switch, List, Avatar, Button, Tooltip, Modal as ModalAntd, notification } from "antd";
-import { FaEdit, FaBan, FaTrashAlt, FaCheckCircle } from "react-icons/fa";
+import { FaEdit, FaBan, FaTrashAlt, FaCheckCircle, FaRegEye } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import NoAvatar from "../../../../assets/img/no-avatar.png";
 import Modal from "../../../Modal";
@@ -161,6 +161,13 @@ function UserActive(props) {
         <>
         <List.Item
             actions={[
+                <Link to={`/recetas/${recipe._id}`} target="_blank">
+                <Tooltip title="Ver Receta">
+                <Button type="primary">
+                    <FaRegEye />
+                </Button>
+                </Tooltip>
+                </Link>,
                 <Tooltip title="Editar Receta">
                 <Button type="primary" onClick={() => editRecipe(recipe)} >
                     <FaEdit />
@@ -271,6 +278,13 @@ function RecipeInactive(props) {
         <>
         <List.Item
                     actions={[
+                        <Link to={`/recetas/${recipe._id}`} target="_blank">
+                        <Tooltip title="Ver Receta">
+                        <Button type="primary">
+                            <FaRegEye />
+                        </Button>
+                        </Tooltip>
+                        </Link>,
                         <Tooltip title="Activar Receta">
                         <Button 
                             type="primary"

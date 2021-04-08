@@ -1,8 +1,14 @@
 import { basePath, apiVersion } from "./config";
 
 
-export function getNoticesApi() {
-    const url = `${basePath}/${apiVersion}/notices`;
+export function getNoticesApi(limit, page) {
+  
+  if (!limit && !page) {
+    page = 1;
+    limit = 10;
+  }
+
+    const url = `${basePath}/${apiVersion}/notices?limit=${limit}&page=${page}`;
   
     const params = {
       method: "GET",

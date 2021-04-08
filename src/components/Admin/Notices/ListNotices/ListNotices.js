@@ -63,7 +63,7 @@ export default function ListNotices(props) {
             <List
             className="users-active"
             itemLayout="horizontal"
-            dataSource={notices}
+            dataSource={notices.docs}
             renderItem={notice => (
               <Notice
                 notice={notice}
