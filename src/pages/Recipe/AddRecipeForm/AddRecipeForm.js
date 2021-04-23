@@ -41,13 +41,18 @@ export default function AddRecipeForm(props) {
     };
 
     const addRecipe = () => {
-        
-      recipe.userId = user.id;
-      recipe.userName = user.name;
-      recipe.userLastName = user.lastname;
+        setRecipe({
+          ...recipe,
+          userId: user.id,
+          userName: user.name,
+          userLastName: user.lastname
+        })
+      // recipe.userId = user.id;
+      // recipe.userName = user.name;
+      // recipe.userLastName = user.lastname;
 
 
-        console.log(recipe);
+        // console.log(recipe);
 
         if (
             !recipe.title ||

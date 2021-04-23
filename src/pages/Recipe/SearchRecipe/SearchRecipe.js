@@ -1,42 +1,106 @@
 import React, {useState, useEffect} from 'react';
+import { Input, Space, Row, Col, Select, Result, Collapse} from 'antd';
+import { FaTired } from 'react-icons/fa'
 import Cards from '../../../components/Recipe/Cards';
 import {Link} from 'react-router-dom';
 import { getRecipesActiveApi } from '../../../api/recipe';
-import { getAccessTokenApi } from '../../../api/auth';
+
 
 import './SearchRecipe.css';
 
+const { Search } = Input;
+const { Option } = Select;
+const { Panel } = Collapse;
+
 export default function SearchRecipe() {
+    
 
     const [recipes, setRecipes] = useState(null);
-    const token = getAccessTokenApi();
 
     useEffect(() => {
-        getRecipesActiveApi(token, true).then(response => {
+        getRecipesActiveApi(true).then(response => {
                 setRecipes(response.recipes);
+     }).catch(err => {
+       console.log(err);
      });
-    }, [token])
+    }, [])
 
- 
+    const onSearch = value => console.log(value);
   
 if(recipes){
-    return (
-        <div className="contenidoRecetas">
-        <div className="container  justify-content-center align-items-center">
-            <h1>Buscador de Recetas</h1>
-            <Link to={"/recetas/nueva"} className="btn btn-primary">Nueva Receta</Link>
-            <Cards recipes={recipes}/>
-        </div>
-        </div>
-    )
 
-}else {
+    return (
+      <div className="contenidoRecetas">
+        <Row gutter={16} justify="center">
+          <Col xs={16} sm={16} md={8} lg={8} xl={8}>
+            <Space direction="vertical">
+              <Search
+                placeholder="Ingrese una receta"
+                onSearch={onSearch}
+                className="search-recipe"
+                enterButton
+              />
+              
+              
+              <Collapse ghost>
+                <Panel header="FILTROS" key="1">
+                <Space direction="horizontal">
+                <h5>Categoría:</h5>
+              <Select defaultValue="all" 
+              style={{ width: 250, textAlign: "center" }}
+              size="small"
+              onChange={onSearch}
+              >
+                <Option value="all">Todas</Option>
+                <Option value="lucy">Aperitivos</Option>
+                <Option value="disabled">Dulces</Option>
+                <Option value="Yiminghe">Postres</Option>
+            </Select>
+            </Space>
+            <Space direction="horizontal">
+              <h5>Ordenar:  </h5>
+              <Select defaultValue="desc" 
+              style={{ width: 250, textAlign: "center" }}
+              size="small"
+              onChange={onSearch}
+              >
+                <Option value="desc">Más Reciente</Option>
+                <Option value="lucy">Más Antiguos</Option>
+            </Select>
+            </Space>
+                </Panel>
+              </Collapse>
+              </Space>
+         
+          </Col>
+        </Row>
+
+        <div className="container justify-content-center align-items-center">
+          <Link to={"/recetas/nueva"} className="btn btn-primary">
+            Nueva Receta
+          </Link>
+
+        {recipes.length === 0 
+        ?
+        <Result
+              icon={<FaTired size={"100px"} color={"white"} />}
+              title="En este momento no existen recetas"
+        /> : <Cards recipes={recipes} />
+        }
+
+          
+        </div>
+      </div>
+    );
+
+}
+
+if(!recipes) {
     return (
         <div className="contenidoRecetas">
         <div className="container  justify-content-center align-items-center">
             <h1>Buscador de Recetas</h1>
             <Link to={"/recetas/nueva"} className="btn btn-primary">Nueva Receta</Link>
-            <h2>No hay recetas</h2>
         </div>
         </div>
     )

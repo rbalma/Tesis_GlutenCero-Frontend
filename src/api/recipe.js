@@ -82,14 +82,13 @@ export function getRecipesApi(token) {
 }
 
 
-export function getRecipesActiveApi(token, status) {
+export function getRecipesActiveApi(status) {
   const url = `${basePath}/${apiVersion}/recipes-active?active=${status}`;
 
   const params = {
     method: "GET",
     headers: {
-      "Content-Type": "application/json",
-      Authorization: token
+      "Content-Type": "application/json"
     }
   };
 

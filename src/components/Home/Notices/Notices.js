@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { Result } from 'antd';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -22,13 +23,15 @@ export default function Notices() {
 
   const [notices, setNotices] = useState(null);
 
+
   useEffect(() => {
      getNoticesApi().then(res => {
-      setNotices(res.noticesStored.docs);
+         setNotices(res.noticesStored.docs);
+    }).catch(err => {
+      console.log(err);
     });
   }, []);
 
-  
 
   if (notices) {
     
@@ -72,7 +75,12 @@ export default function Notices() {
 
     return (
       <section id="notices" className="container mt-5 mb-4">
-      <h1>No hay noticias</h1>
+      <h1>Últimas Noticias</h1>
+      <Result
+        status="404"
+        title="Error 404"
+        subTitle="Lo siento, no existen noticias."
+      />
       </section>
     )
 
