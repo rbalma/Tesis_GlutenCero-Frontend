@@ -28,7 +28,7 @@ export default  function LayoutBasic(props) {
                     <LoadRoutes routes={routes} />
                 </Content>
            
-            <Footer/>
+            <Footer />
 
         </>
     )

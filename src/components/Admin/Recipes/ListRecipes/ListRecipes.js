@@ -7,6 +7,7 @@ import Modal from "../../../Modal";
 import EditRecipeForm from "../EditRecipeForm";
 import {getImageApi, activateRecipeApi, deleteRecipeApi } from "../../../../api/recipe";
 import { getAccessTokenApi } from "../../../../api/auth";
+import Pagination from '../../../../components/Pagination';
 
 import "./ListRecipes.scss";
 
@@ -14,7 +15,7 @@ const { confirm } = ModalAntd;
 
 export default function ListUsers(props){
 
-    const { recipesActive, recipesInactive, setReloadRecipes } = props;
+    const { recipesActive, recipesInactive, setReloadRecipes, location, history } = props;
     const [viewRecipesActives, setViewRecipesActive] = useState(true);
     const [isVisibleModal, setIsVisibleModal] = useState(false);
     const [modalTitle, setModalTitle] = useState("");
@@ -50,9 +51,12 @@ export default function ListUsers(props){
                     setModalTitle={setModalTitle} 
                     setModalContent={setModalContent}
                     setReloadRecipes={setReloadRecipes}
+                    location={location}
+                    history={history}
                      />
                 ) : (
-                    <RecipesInactive recipesInactive={recipesInactive} setReloadRecipes={setReloadRecipes} />
+                    <RecipesInactive recipesInactive={recipesInactive} setReloadRecipes={setReloadRecipes}
+                    location={location} history={history} />
                 )}
                 
 
@@ -71,7 +75,7 @@ export default function ListUsers(props){
 
 
 function RecipesActive(props){
-    const { recipesActive, setIsVisibleModal, setModalTitle, setModalContent, setReloadRecipes } = props;
+    const { recipesActive, setIsVisibleModal, setModalTitle, setModalContent, setReloadRecipes, location, history } = props;
 
     const editRecipe = recipe => {
         setIsVisibleModal(true);
@@ -84,7 +88,7 @@ function RecipesActive(props){
         <List
         className="users-active"
         itemLayout="horizontal"
-        dataSource={recipesActive}
+        dataSource={recipesActive.docs}
         renderItem={recipe => (
           <UserActive
             recipe={recipe}
@@ -93,6 +97,7 @@ function RecipesActive(props){
           />
         )}
       />
+      <Pagination notices={recipesActive} location={location} history={history} />
       </>
     );
   }
@@ -187,8 +192,8 @@ function UserActive(props) {
         >
         <List.Item.Meta 
                         avatar={<Avatar src={avatar ? avatar : NoAvatar} />}
-                        title={recipe.userName + ' ' + recipe.userLastName}
-                        description={recipe.title}
+                        title= {recipe.title}
+                        description=  {recipe.category + ' - ' + recipe.userName + ' ' + recipe.userLastName}
         />
         </List.Item>
         </>
@@ -198,18 +203,19 @@ function UserActive(props) {
 
 
 function RecipesInactive(props){
-    const {recipesInactive, setReloadRecipes } = props;
+    const {recipesInactive, setReloadRecipes, location, history } = props;
 
     return (
         <>
         <List
           className="users-active"
           itemLayout="horizontal"
-          dataSource={recipesInactive}
+          dataSource={recipesInactive.docs}
           renderItem={recipe => (
             <RecipeInactive recipe={recipe} setReloadRecipes={setReloadRecipes} />
           )}
         />
+         <Pagination notices={recipesInactive} location={location} history={history} />
         </>
       );
      
@@ -305,8 +311,8 @@ function RecipeInactive(props) {
                 >
                      <List.Item.Meta 
                         avatar={<Avatar src={avatar ? avatar : NoAvatar} />}
-                        title= {recipe.userName + ' ' + recipe.userLastName}
-                        description={recipe.title}
+                        title= {recipe.title} 
+                        description= {recipe.userName + ' ' + recipe.userLastName}
                     />
                 </List.Item>
                 </>

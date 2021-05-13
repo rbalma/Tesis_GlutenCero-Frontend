@@ -22,7 +22,7 @@ function Notices(props) {
                     message: response.message
                 });
             } else {                
-                setNotices(response.noticesStored);
+                setNotices(response.notice);
             }
         })
         .catch(() => {

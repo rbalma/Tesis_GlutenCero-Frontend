@@ -5,7 +5,7 @@ import './Footer.css';
 
 export default function Home() {
   return (
-    <footer className="footer-back">
+    <footer>
     <div className="container">
       <div className="copyright">
         &copy; Copyright <strong>Gluten Cero</strong>. 2021

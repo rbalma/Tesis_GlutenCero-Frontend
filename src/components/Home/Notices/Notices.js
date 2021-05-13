@@ -21,20 +21,34 @@ SwiperCore.use([Navigation, Pagination]);
 
 export default function Notices() {
 
-  const [notices, setNotices] = useState(null);
+  const [notices, setNotices] = useState([]);
 
 
   useEffect(() => {
      getNoticesApi().then(res => {
-         setNotices(res.noticesStored.docs);
+      setNotices(res.notice.docs);
     }).catch(err => {
       console.log(err);
     });
   }, []);
 
+    // Para saber si un objeto tiene cierta información
+    //if(Object.keys(frase).length === 0 ) return null;
+  if (notices.length === 0){
+   
+    return (
+      <section id="notices" className="container mt-5 mb-4">
+      <h1 className="mb-4">Últimas Noticias</h1>
+      <Result
+        status="404"
+        title="Error 404"
+        subTitle="Lo siento, no existen noticias."
+      />
+      </section>
+    )
 
-  if (notices) {
-    
+  } else {
+ 
     return (
       <section id="notices" className="container mt-5 mb-4">
         <h1 className="mb-4">Últimas Noticias</h1>
@@ -71,25 +85,6 @@ export default function Notices() {
     );
   } 
   
-  if (!notices){
-
-    return (
-      <section id="notices" className="container mt-5 mb-4">
-      <h1>Últimas Noticias</h1>
-      <Result
-        status="404"
-        title="Error 404"
-        subTitle="Lo siento, no existen noticias."
-      />
-      </section>
-    )
-
-  }
-
-  
-  
-
-
 
   function Notice(props) {
     const {notice} = props;

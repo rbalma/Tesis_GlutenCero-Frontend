@@ -11,7 +11,6 @@ export default function CategoryIngredients(props) {
 
     const { Option } = Select;
 
-
     const continues = e => {
         //e.preventDefault();
         nextStep();

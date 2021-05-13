@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import { Input, Space, Row, Col, Select, Result, Collapse} from 'antd';
-import { FaTired } from 'react-icons/fa'
+import { Input, Space, Row, Col, Select, Collapse} from 'antd';
+import Spinner from '../../../components/Spinner';
 import Cards from '../../../components/Recipe/Cards';
 import {Link} from 'react-router-dom';
+import { notification } from "antd";
+import queryString  from "query-string";
 import { getRecipesActiveApi } from '../../../api/recipe';
+
 
 
 import './SearchRecipe.css';
@@ -12,22 +15,32 @@ const { Search } = Input;
 const { Option } = Select;
 const { Panel } = Collapse;
 
-export default function SearchRecipe() {
+export default function SearchRecipe(props) {
     
-
-    const [recipes, setRecipes] = useState(null);
+    const { location, history } = props;
+    const [recipes, setRecipes] = useState([]);
+    const { page = 1 } = queryString.parse(location.search);
 
     useEffect(() => {
-        getRecipesActiveApi(true).then(response => {
-                setRecipes(response.recipes);
-     }).catch(err => {
-       console.log(err);
-     });
-    }, [])
+      getRecipesActiveApi(true, 6, page).then(response => {
+        if(response?.code !== 200){
+            notification["warning"]({
+                message: response.message
+            });
+        } else {                
+          setRecipes(response.recipes);
+        }
+    })
+    .catch(() => {
+        notification["error"]({
+            message: "Error del servidor"
+        });
+    });
+    }, [page]);
 
     const onSearch = value => console.log(value);
   
-if(recipes){
+
 
     return (
       <div className="contenidoRecetas">
@@ -80,30 +93,17 @@ if(recipes){
             Nueva Receta
           </Link>
 
-        {recipes.length === 0 
+        {!recipes.docs 
         ?
-        <Result
-              icon={<FaTired size={"100px"} color={"white"} />}
-              title="En este momento no existen recetas"
-        /> : <Cards recipes={recipes} />
+          <Spinner />
+        : <Cards recipes={recipes} location={location} history={history} />
         }
 
-          
         </div>
       </div>
     );
 
 }
 
-if(!recipes) {
-    return (
-        <div className="contenidoRecetas">
-        <div className="container  justify-content-center align-items-center">
-            <h1>Buscador de Recetas</h1>
-            <Link to={"/recetas/nueva"} className="btn btn-primary">Nueva Receta</Link>
-        </div>
-        </div>
-    )
-}
    
-}
+

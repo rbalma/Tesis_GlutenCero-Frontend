@@ -26,7 +26,7 @@ export default function Card(props) {
     }, [recipe]);
 
     return (
-        <div className="card text-center m-3 bg-dark animate__animated animate__fadeInUp">
+        <div className="card text-center m-3 bg-dark animate__animated animate__fadeIn">
             <div className="overflow">
             <img src={image} alt="logo" className="card-img-top"/>
             </div>

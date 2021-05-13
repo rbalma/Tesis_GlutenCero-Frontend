@@ -82,8 +82,14 @@ export function getRecipesApi(token) {
 }
 
 
-export function getRecipesActiveApi(status) {
-  const url = `${basePath}/${apiVersion}/recipes-active?active=${status}`;
+export function getRecipesActiveApi(status, limit, page) {
+
+  if (!limit && !page) {
+    page = 1;
+    limit = 10;
+  }
+
+  const url = `${basePath}/${apiVersion}/recipes-active?active=${status}&limit=${limit}&page=${page}`;
 
   const params = {
     method: "GET",

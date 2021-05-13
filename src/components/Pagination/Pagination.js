@@ -6,6 +6,7 @@ import './Pagination.scss';
 export default function Pagination(props) {
 
     const { notices, location, history } = props;
+    
     const currentPage = parseInt(notices.page);
 
     const onChangePage = newPage => {
@@ -13,15 +14,14 @@ export default function Pagination(props) {
     }
 
     return (
-        
+       
         <PaginationAntd
             defaultCurrent={currentPage}
-            pageSize={5}
+            pageSize={6}
             total={notices.totalDocs}
             onChange={newPage => onChangePage(newPage)}
             className="pagination"
         >
-            <h1>Paginacion...</h1>
         </PaginationAntd>
     )
 
