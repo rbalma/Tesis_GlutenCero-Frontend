@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row, Select, Form, Button} from "antd";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import '@ckeditor/ckeditor5-build-classic/build/translations/es';
 
 import '../../../../pages/Recipe/AddRecipeForm/AddRecipeForm.css';
 
@@ -21,6 +22,8 @@ export default function CategoryIngredients(props) {
         prevStep();
     };
 
+   
+
     return (
       <div className="form-container">
         <h1 className="mb-5">Crea tu Receta</h1>
@@ -34,7 +37,6 @@ export default function CategoryIngredients(props) {
                 value={recipe.category}
               >
                 <Option value="aperitivos">Aperitivos</Option>
-                <Option value="bebidas">Bebidas</Option>
                 <Option value="dulces">Dulces</Option>
                 <Option value="ensalada">Ensaladas</Option>
                 <Option value="panes">Panes</Option>
@@ -50,6 +52,10 @@ export default function CategoryIngredients(props) {
         <div>
         <label>Ingresa un listado de los Ingredientes</label>
           <CKEditor
+          config={ {
+            // Use the Spanish language for this editor.
+            language: 'es'
+        } }
           editor={ClassicEditor}
           data={recipe.ingredient}
           onChange={(e, editor) => {

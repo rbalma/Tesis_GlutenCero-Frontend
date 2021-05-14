@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Input, Space, Row, Col, Select, Collapse} from 'antd';
+import { Input, Space, Row, Col, Collapse} from 'antd';
 import Spinner from '../../../components/Spinner';
 import Cards from '../../../components/Recipe/Cards';
 import {Link} from 'react-router-dom';
@@ -12,23 +12,27 @@ import { getRecipesActiveApi } from '../../../api/recipe';
 import './SearchRecipe.css';
 
 const { Search } = Input;
-const { Option } = Select;
 const { Panel } = Collapse;
 
 export default function SearchRecipe(props) {
     
     const { location, history } = props;
     const [recipes, setRecipes] = useState([]);
+    const [search, setSearch] = useState('');
+    const [type, setType] = useState('all');
+    const [sort, setSort] = useState('desc');
+    const [reload, setReload] = useState(false);
     const { page = 1 } = queryString.parse(location.search);
 
     useEffect(() => {
-      getRecipesActiveApi(true, 6, page).then(response => {
+      getRecipesActiveApi(true, type, sort, search, 6, page).then(response => {
         if(response?.code !== 200){
             notification["warning"]({
                 message: response.message
             });
         } else {                
           setRecipes(response.recipes);
+          setReload(false);
         }
     })
     .catch(() => {
@@ -36,11 +40,23 @@ export default function SearchRecipe(props) {
             message: "Error del servidor"
         });
     });
-    }, [page]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [reload, page]);
 
-    const onSearch = value => console.log(value);
+
+    const getFilter = () => {
+      setReload(true);
+  }
   
+  const recipeFilter = (type) => {
+    setType(type);
+    setReload(true);
+  };
 
+  const recipeSort = (sort) => {
+    setSort(sort);
+    setReload(true);
+  };
 
     return (
       <div className="contenidoRecetas">
@@ -49,9 +65,11 @@ export default function SearchRecipe(props) {
             <Space direction="vertical">
               <Search
                 placeholder="Ingrese una receta"
-                onSearch={onSearch}
+                onChange={e => setSearch(e.target.value)}
+                onSearch={() => getFilter()}
                 className="search-recipe"
                 enterButton
+                value={search}
               />
               
               
@@ -59,27 +77,31 @@ export default function SearchRecipe(props) {
                 <Panel header="FILTROS" key="1">
                 <Space direction="horizontal">
                 <h5>Categoría:</h5>
-              <Select defaultValue="all" 
+              <select 
               style={{ width: 250, textAlign: "center" }}
-              size="small"
-              onChange={onSearch}
+              name="type"
+              onChange={(e) => recipeFilter(e.target.value)}
               >
-                <Option value="all">Todas</Option>
-                <Option value="lucy">Aperitivos</Option>
-                <Option value="disabled">Dulces</Option>
-                <Option value="Yiminghe">Postres</Option>
-            </Select>
+                <option value="all">Todas</option>
+                <option value="aperitivos">Aperitivos</option>
+                <option value="dulces">Dulces</option>
+                <option value="ensalada">Ensaladas</option>
+                <option value="panes">Panes</option>
+                <option value="platos principales">Platos principales</option>
+                <option value="postres">Postres</option>
+                <option value="sopas">Sopas</option>
+            </select>
             </Space>
             <Space direction="horizontal">
               <h5>Ordenar:  </h5>
-              <Select defaultValue="desc" 
+              <select 
               style={{ width: 250, textAlign: "center" }}
-              size="small"
-              onChange={onSearch}
+              name="sort"
+              onChange={(e) => recipeSort(e.target.value)}
               >
-                <Option value="desc">Más Reciente</Option>
-                <Option value="lucy">Más Antiguos</Option>
-            </Select>
+                <option value="desc">Más Reciente</option>
+                <option value="asc">Más Antiguos</option>
+            </select>
             </Space>
                 </Panel>
               </Collapse>
@@ -93,7 +115,7 @@ export default function SearchRecipe(props) {
             Nueva Receta
           </Link>
 
-        {!recipes.docs 
+        {!recipes.docs || recipes.docs.length === 0 
         ?
           <Spinner />
         : <Cards recipes={recipes} location={location} history={history} />

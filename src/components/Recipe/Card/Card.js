@@ -15,6 +15,9 @@ export default function Card(props) {
     const month = moment(recipe.date).format("MM");
     const year = moment(recipe.date).format("YYYY");
 
+    const hour = moment(recipe.date).format("HH");
+    const minute = moment(recipe.date).format("mm");
+
     useEffect(() => {
       if (recipe.image) {
         getImageApi(recipe.image).then(response => {
@@ -34,7 +37,7 @@ export default function Card(props) {
                 <h5 className="card-title text-light">{recipe.title}</h5>
                 <p className="textoTarjeta text-light">
                 
-                <small className="text-muted">{day}/{month}/{year}</small>
+                <small className="text-muted">{day}/{month}/{year} - {hour}:{minute} hrs</small>
                 </p>
                 <Link to={`/recetas/${recipe._id}`} className="btn btn-primary rounded-0" >
                    Ir a la Receta

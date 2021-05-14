@@ -22,7 +22,12 @@ export default function Cards(props) {
         </div>
          <div className="row">
            <div className="offset-5 mb-4">
-             <Pagination notices={recipes} location={location} history={history} />
+           {!recipes.docs || recipes.totalDocs < 7
+        ?
+          null
+        : <Pagination notices={recipes} location={location} history={history} />
+        }
+             
            </div>
          </div>
          </>
