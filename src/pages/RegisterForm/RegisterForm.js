@@ -120,30 +120,31 @@ export default function RegisterForm ({history}) {
                     <div className="form-group row">
                       <div className="col-sm-6 mb-3 mb-sm-0">
                         <input type="text" className="form-control form-control-user" name="name" placeholder="Nombre"
-                        value={inputs.name}
+                        defaultValue={inputs.name}
                          />
                       </div>
                       <div className="col-sm-6">
                         <input type="text" name="lastname" className="form-control form-control-user" placeholder="Apellido" 
-                        value={inputs.lastname}
+                        defaultValue={inputs.lastname}
                         />
                       </div>
                     </div>
                     <div className="form-group">
                       <input 
                       type="email" name="email"   className="form-control form-control-user" placeholder="Correo electrónico"
-                      value={inputs.email}
+                      defaultValue={inputs.email}
                        />
                     </div>
                     <div className="form-group">
                         <input type={InputType} name="password" className="form-control form-control-user" placeholder="Contraseña"
-                        value={inputs.password}
+                        defaultValue={inputs.password}
                          />
-                         <small className="info"> Debe contener número, letra mayúscula y minúscula. Entre 8 a 15 caracteres</small>
+                         <small className="info">Debe contener número, letra mayúscula y minúscula. De 8 a 15 caracteres</small>
+
                       
                       <div className="form-group mt-3">
                         <input type={InputType} name="repeatPassword" className="form-control form-control-user" placeholder="Repetir contraseña"
-                        value={inputs.repeatPassword}
+                        defaultValue={inputs.repeatPassword}
                          />
                          <i className="password-icon3" onClick={() => setVisible(!visible)} ><Icon size="20px" /></i>
                       </div>

@@ -22,7 +22,10 @@ export default function NavBar() {
         getAvatarApi(user.avatar).then(response => {
           setAvatar(response);
         });
+      }else {
+        setAvatar(null);
       }
+
     }, [user]);
 
 
@@ -34,8 +37,9 @@ export default function NavBar() {
     }
 
 
-
+ 
     return (
+     
       <>
     <header>
     
@@ -77,7 +81,7 @@ export default function NavBar() {
       (<div className="d-flex flex-row justify-content-center">  
         <ol className="nav-item dropdown">
         <Link to={"#"} className="nav-link dropdown-toggle nombre" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
-         <img alt="images" src={avatar ? avatar : NoAvatar} className="perfil" /> {user.name}
+         <img alt="images" src={avatar? avatar : NoAvatar} className="perfil" /> {user.name}
         </Link>
         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <Link to={"/perfil"} className="dropdown-item"><FaAddressCard size="18px" className="mr-2 mb-1"/>Perfil</Link>

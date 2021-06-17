@@ -15,7 +15,7 @@ export default function Recipes(props) {
     const { page = 1 } = queryString.parse(location.search);
 
     useEffect(() => {
-        getRecipesActiveApi(true, 5, page).then(response => {
+        getRecipesActiveApi(true, 'all', 'desc', '', 5, page).then(response => {
             if(response?.code !== 200){
                 notification["warning"]({
                     message: response.message
@@ -30,7 +30,7 @@ export default function Recipes(props) {
             });
         });
 
-        getRecipesActiveApi(false, 5, page).then(response => {
+        getRecipesActiveApi(false, 'all', 'desc', '', 5, page).then(response => {
             if(response?.code !== 200){
                 notification["warning"]({
                     message: response.message

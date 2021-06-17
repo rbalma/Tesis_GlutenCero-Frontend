@@ -12,12 +12,12 @@ export default function CategoryIngredients(props) {
 
     const { Option } = Select;
 
-    const continues = e => {
+    const continues = () => {
         //e.preventDefault();
         nextStep();
     };
 
-    const back = e => {
+    const back = () => {
         //e.preventDefault();
         prevStep();
     };
@@ -54,6 +54,7 @@ export default function CategoryIngredients(props) {
           <CKEditor
           config={ {
             // Use the Spanish language for this editor.
+            toolbar: [ 'heading', '|', 'bold', 'italic', '|', 'undo', 'redo', '|', 'numberedList', 'bulletedList'],
             language: 'es'
         } }
           editor={ClassicEditor}

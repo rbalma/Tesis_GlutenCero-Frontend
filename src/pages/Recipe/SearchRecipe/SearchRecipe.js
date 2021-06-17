@@ -64,6 +64,7 @@ export default function SearchRecipe(props) {
           <Col xs={16} sm={16} md={8} lg={8} xl={8}>
             <Space direction="vertical">
               <Search
+              allowClear
                 placeholder="Ingrese una receta"
                 onChange={e => setSearch(e.target.value)}
                 onSearch={() => getFilter()}

@@ -20,6 +20,8 @@ import SearchRecipe from '../pages/Recipe/SearchRecipe';
 import AddRecipeForm from '../pages/Recipe/AddRecipeForm';
 import ViewRecipe from '../pages/Recipe/ViewRecipe';
 
+import { Threads } from '../pages/Forums/Threads';
+
 
 //Error
 import Error404 from '../pages/Error404';
@@ -94,6 +96,11 @@ const routes = [
             {
                 path: "/recetas/:id",
                 component: ViewRecipe,
+                exact: true
+            },
+            {
+                path: "/foro",
+                component: Threads,
                 exact: true
             },
             {
