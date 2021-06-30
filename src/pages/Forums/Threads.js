@@ -3,7 +3,7 @@ import Thread from '../../components/Forum/Thread';
 import Post from '../../components/Forum/Post';
 import RichTextEditor from '../../components/TextEditor/RichTextEditor.js';
 
-export const Threads = () => {
+export default function Threads() {
 
    const [ text, setText ] = useState('');
 
@@ -25,7 +25,4 @@ export const Threads = () => {
 
         </div>
     )
-
-
-
 }

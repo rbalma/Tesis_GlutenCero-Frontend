@@ -19,8 +19,8 @@ import Login from '../pages/Login';
 import SearchRecipe from '../pages/Recipe/SearchRecipe';
 import AddRecipeForm from '../pages/Recipe/AddRecipeForm';
 import ViewRecipe from '../pages/Recipe/ViewRecipe';
-
-import { Threads } from '../pages/Forums/Threads';
+import Threads from '../pages/Forums/Threads';
+import ProductsList from '../pages/Products/ProductsList';
 
 
 //Error
@@ -101,6 +101,11 @@ const routes = [
             {
                 path: "/foro",
                 component: Threads,
+                exact: true
+            },
+            {
+                path: "/listado-productos",
+                component: ProductsList,
                 exact: true
             },
             {
