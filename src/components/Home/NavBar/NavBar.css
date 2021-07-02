@@ -37,6 +37,7 @@ header {
 .navbar-light .navbar-nav .nav-item.active .nav-link
  {
   color: #0b6bd3;
+  font-weight: 500;
 }
 
 .navbar-light .navbar-nav .nav-item .nav-link {

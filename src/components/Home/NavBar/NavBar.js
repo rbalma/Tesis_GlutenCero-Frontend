@@ -88,7 +88,7 @@ export default function NavBar() {
           <div className="dropdown-divider"></div>
           <Link to={"/configuracion"} className="dropdown-item"><FaWrench size="18px" className="mr-2 mb-1"/>Configuración</Link>
           <div className="dropdown-divider"></div>
-          <button className="dropdown-item" onClick={logoutUser}><FaSignOutAlt size="18px" className="mr-2 mb-1"/>Salir</button>
+         <button className="dropdown-item" onClick={logoutUser}><FaSignOutAlt size="18px" className="mr-2 mb-1"/>Salir</button>
         </div>
       </ol> 
     </div>) : 
