@@ -70,28 +70,28 @@ export default function ProductsList() {
     },
     {
       title: "Tipo Producto",
-      dataIndex: "tipoProducto",
-      key: "tipoProducto",
+      dataIndex: "TipoProducto",
+      key: "TipoProducto",
       align: "center",
     },
     {
       title: "Estado",
-      dataIndex: "estado",
-      key: "estado",
+      dataIndex: "Estado",
+      key: "Estado",
       align: "center",
       filters: [
         { text: "Vigente", value: "Vigente" },
         { text: "Baja Permanente", value: "Baja Permanente" },
         { text: "Baja Provisoria", value: "Baja Provisoria" },
       ],
-      filteredValue: filteredInfo.estado || null,
-      onFilter: (value, record) => record.estado.includes(value),
+      filteredValue: filteredInfo.Estado || null,
+      onFilter: (value, record) => record.Estado.includes(value),
     },
   ];
 
   const onFinish = (values) => {
 
-    if(!values.rnpa && !values.marca && !values.denominacionVenta && !values.tipoProducto){
+    if(!values.rnpa && !values.marca && !values.denominacionVenta && !values.TipoProducto){
       message.error('Todos los campos están vacios');
       return;
     }
@@ -109,16 +109,16 @@ export default function ProductsList() {
       values.denominacionVenta = '$';
     }
 
-    if(!values.tipoProducto){
-      values.tipoProducto = '$';
+    if(!values.TipoProducto){
+      values.TipoProducto = '$';
     }
 
-    console.log("Received values of form: ", values);
+    //console.log("Received values of form: ", values);
 
     let resultadosBusqueda= data.filter((elemento) => {
-      if(elemento.marca.toString().toLowerCase().includes(values.marca.toLowerCase())
-      || elemento.tipoProducto.toString().toLowerCase().includes(values.tipoProducto.toLowerCase())
-      || elemento.denominacionventa.toString().toLowerCase().includes(values.denominacionVenta.toLowerCase())
+      if(elemento.marca.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,"").includes(values.marca.toLowerCase())
+      || elemento.TipoProducto.toLowerCase().includes(values.TipoProducto.toLowerCase())
+      || elemento.denominacionventa.toLowerCase().includes(values.denominacionVenta.toLowerCase())
       || elemento.rnpa.toString().toLowerCase().includes(values.rnpa.toLowerCase())
       ){
         return elemento;
@@ -155,7 +155,7 @@ export default function ProductsList() {
             </Form.Item>
           </Col>
           <Col span={16}>
-            <Form.Item name="tipoProducto" label="Tipo Producto">
+            <Form.Item name="TipoProducto" label="Tipo Producto">
               <Input placeholder="Ej. Yogures" />
             </Form.Item>
           </Col>

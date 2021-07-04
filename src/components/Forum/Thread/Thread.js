@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaPlus } from "react-icons/fa";
 
 import '../Forum.css';
 
@@ -8,17 +9,16 @@ export default function Thread(){
     <div className='snippet-body thread'>
     <div className="container-fluid mt-100">
     <div className="d-flex flex-wrap justify-content-between">
-        <div> <button type="button" className="btn btn-shadow btn-wide btn-primary"> <span className="btn-icon-wrapper pr-2 opacity-7"> <i className="fa fa-plus fa-w-20"></i> </span> New thread </button> </div>
-        <div className="col-12 col-md-3 p-0 mb-3"> <input type="text" className="form-control" placeholder="Search..." /> </div>
+        <div> <button type="button" className="btn btn-shadow btn-wide btn-primary mb-3"> <span className="btn-icon-wrapper pr-2 opacity-7 mb-3"> <FaPlus /> </span> Nuevo Hilo </button> </div>
     </div>
     <div className="card mb-3">
         <div className="card-header pl-0 pr-0">
             <div className="row no-gutters w-100 align-items-center">
-                <div className="col ml-3">Topics</div>
+                <div className="col ml-3"> Hilos</div>
                 <div className="col-4 text-muted">
                     <div className="row no-gutters align-items-center">
-                        <div className="col-4">Replies</div>
-                        <div className="col-8">Last update</div>
+                        <div className="col-4"> Respuestas</div>
+                        <div className="col-8"> Última Actividad</div>
                     </div>
                 </div>
             </div>

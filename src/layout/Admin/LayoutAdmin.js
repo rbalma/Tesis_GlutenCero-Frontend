@@ -14,7 +14,7 @@ export default  function LayoutBasic(props) {
 
     const { routes } = props;
     const [menuCollapsed, setMenuCollapsed] = useState(false);
-    const { Header, Content, Footer} = Layout;
+    const { Header, Content} = Layout;
     const {user, isLoading} = useAuth();
 
 
@@ -39,7 +39,6 @@ export default  function LayoutBasic(props) {
                 <Content className="layout-admin_content">
                     <LoadRoutes routes={routes} />
                 </Content>
-                <Footer className="layout-admin_footer">Rodrigo Balmaceda</Footer>
             </Layout>
         </Layout>
     );

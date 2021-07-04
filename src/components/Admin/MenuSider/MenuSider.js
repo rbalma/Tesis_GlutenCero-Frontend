@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Layout, Menu } from "antd";
-import { FaMapMarkedAlt, FaUserCircle, FaClipboardList, FaBookReader } from "react-icons/fa";
+import { FaMapMarkedAlt, FaUserCircle, FaClipboardList, FaBookReader, FaRegFileExcel, FaPaperPlane } from "react-icons/fa";
 
 import "./MenuSider.scss";
 
@@ -45,6 +45,18 @@ function MenuSider(props) {
           <Link to="/admin/mapa">
           <FaMapMarkedAlt className="ml-3"/>
             <span className="nac-text ml-4">Mapa</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="/admin/productos-anmat">
+          <Link to="/admin/productos-anmat">
+          <FaRegFileExcel className="ml-3"/>
+            <span className="nac-text ml-4">Productos</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="/admin/contacto">
+          <Link to="/admin/contacto">
+          <FaPaperPlane className="ml-3"/>
+            <span className="nac-text ml-4">Contacto</span>
           </Link>
         </Menu.Item>
       </Menu>

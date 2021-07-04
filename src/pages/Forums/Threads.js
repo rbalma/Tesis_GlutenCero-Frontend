@@ -11,16 +11,22 @@ export default function Threads() {
        setText(e);
    }
     return (
-        <div className="container" style={{marginTop: "300px"}}>
+        <div className="container">
+            <Thread />
+        <div className="row">
+        <div className="col-8 offset-2">
+        
         <RichTextEditor
           content={text}
           handleContentChange={handleText}
           placeholder="insert text here..."
         />
+        </div>
+        </div>
 
         <Post />
 
-        <Thread />
+        
 
 
         </div>

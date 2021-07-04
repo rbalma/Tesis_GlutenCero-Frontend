@@ -8,7 +8,7 @@ import AddUser from '../components/Admin/Users/AddUserForm';
 import AdminNotices from '../pages/Admin/Notices';
 import AddNotice from '../components/Admin/Notices/AddNoticeForm';
 import AdminRecipes from '../pages/Admin/Recipes';
-
+import AdminProducts from '../pages/Admin/Products';
 
 
 
@@ -56,6 +56,11 @@ const routes = [
             {
                 path: "/admin/recetas",
                 component: AdminRecipes,
+                exact: true
+            },
+            {
+                path: "/admin/productos-anmat",
+                component: AdminProducts,
                 exact: true
             },
             {

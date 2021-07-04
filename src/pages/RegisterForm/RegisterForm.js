@@ -139,7 +139,7 @@ export default function RegisterForm ({history}) {
                         <input type={InputType} name="password" className="form-control form-control-user" placeholder="Contraseña"
                         defaultValue={inputs.password}
                          />
-                         <small className="info">Debe contener número, letra mayúscula y minúscula. De 8 a 15 caracteres</small>
+                         <small className="info">Debe tener número, mayúscula y minúscula. De 8 a 15 caracteres</small>
 
                       
                       <div className="form-group mt-3">
