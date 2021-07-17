@@ -8,13 +8,15 @@
 }
 
 .mt-100 {
-    margin-top: 110px
+    margin-top: 100px
 }
+
+
 
 .card {
     box-shadow: 0 0.46875rem 2.1875rem rgba(4, 9, 20, 0.03), 0 0.9375rem 1.40625rem rgba(4, 9, 20, 0.03), 0 0.25rem 0.53125rem rgba(4, 9, 20, 0.05), 0 0.125rem 0.1875rem rgba(4, 9, 20, 0.03);
     border-width: 0;
-    transition: all .2s
+    transition: all .2s;
 }
 
 .card-header:first-child {
@@ -48,22 +50,6 @@
     color: #fff;
     background-color: #3f6ad8;
     border-color: #3f6ad8
-}
-
-.form-control {
-    display: block;
-    width: 100%;
-    height: calc(2.25rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
 }
 
 .card-body {

@@ -83,11 +83,7 @@ export default function AddRecipeForm(props) {
     }
 
     if (!user) {
-        return (
-            <>
-                 <Redirect to="/login" /> 
-            </>
-        )
+        return ( <Redirect to="/login" /> )
     } else {
       switch (recipe.step) {
         case 1:

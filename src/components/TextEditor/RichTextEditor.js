@@ -16,8 +16,7 @@ const RichTextEditor = ({ content, placeholder, handleContentChange }) => {
       value={content}
       modules={RichTextEditor.modules}
       formats={RichTextEditor.formats}
-      placeholder={placeholder}
-      
+      placeholder={placeholder}  
     />
   );
 };

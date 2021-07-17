@@ -16,15 +16,15 @@ import AdminProducts from '../pages/Admin/Products';
 import Home from '../pages/Home';
 import Register from '../pages/RegisterForm';
 import Login from '../pages/Login';
+import Error404 from '../pages/Error404';
 import SearchRecipe from '../pages/Recipe/SearchRecipe';
 import AddRecipeForm from '../pages/Recipe/AddRecipeForm';
 import ViewRecipe from '../pages/Recipe/ViewRecipe';
-import Threads from '../pages/Forums/Threads';
 import ProductsList from '../pages/Products/ProductsList';
+import Threads from '../pages/Forums/ThreadScreen';
+import ThreadAdd from '../pages/Forums/ThreadAdd';
+import PostScreen from '../pages/Forums/PostScreen';
 
-
-//Error
-import Error404 from '../pages/Error404';
 
 
 const routes = [
@@ -106,6 +106,16 @@ const routes = [
             {
                 path: "/foro",
                 component: Threads,
+                exact: true
+            },
+            {
+                path: "/foro/nuevo-hilo",
+                component: ThreadAdd,
+                exact: true
+            },
+            {
+                path: "/foro/:id",
+                component: PostScreen,
                 exact: true
             },
             {

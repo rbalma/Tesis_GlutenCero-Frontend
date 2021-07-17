@@ -13,8 +13,8 @@ import { notification } from "antd";
 export default function Login() {
 
   const [inputs, setInputs] = useState({
-    email: "",
-    password: ""
+    email: "balmarodrigo@hotmail.com",
+    password: "T@lleres2020"
   });
 
   const changeForm = e => {
@@ -80,13 +80,13 @@ export default function Login() {
 
                 <form className="user" onChange={changeForm} onSubmit={login}>
                   <div className="form-group">
-                    <input type="email" className="form-control form-control-user" aria-describedby="emailHelp"
+                    <input type="email" className="form-control form-control-user" aria-describedby="emailHelp" value={inputs.email}
                     name="email" placeholder="Correo electrónico" />
                   </div>
                   <div className="form-group form-row">
                   <div className="col">
                     <input type={InputType} className="form-control form-control-user" 
-                    name="password"
+                    name="password" value={inputs.password}
                     placeholder="Contraseña" /> 
                      <i className="password-icon" onClick={() => setVisible(!visible)} ><Icon size="20px" /></i>
                     </div>
