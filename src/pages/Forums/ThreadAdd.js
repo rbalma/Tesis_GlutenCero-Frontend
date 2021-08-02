@@ -17,7 +17,6 @@ export default function ThreadAdd({ history }) {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    console.log(thread);
 
     if(!thread.title || !thread.content){
       message.error("Todos los campos son obligatorios");
@@ -32,8 +31,8 @@ export default function ThreadAdd({ history }) {
         message.loading({ content: 'Creando Hilo...', key : 'updatable' });
         setTimeout(() => {
           message.success({ content: '!Listo!', key : 'updatable', duration: 2 });
+          history.push("/foro");
         }, 1000);
-        history.push("/foro");
       } else {
         message.error(res.message);
       }

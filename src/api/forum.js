@@ -4,7 +4,7 @@ import { basePath, apiVersion } from "./config";
     THREADS
 */
 
-export const getThreadsApi = async(limit = 10, page = 1) => {
+export const getThreadsApi = async(limit, page) => {
   const url = `${basePath}/${apiVersion}/threads?limit=${limit}&page=${page}`;
 
   const params = {

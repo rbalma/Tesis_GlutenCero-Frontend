@@ -9,7 +9,10 @@ import AdminNotices from '../pages/Admin/Notices';
 import AddNotice from '../components/Admin/Notices/AddNoticeForm';
 import AdminRecipes from '../pages/Admin/Recipes';
 import AdminProducts from '../pages/Admin/Products';
-
+import AdminThreads from '../pages/Admin/Forum/Threads';
+import AdminThreadsForm from '../components/Admin/Forum/Threads/FormThreads';
+import AdminPosts from '../pages/Admin/Forum/Posts';
+import AdminPostsForm from '../components/Admin/Forum/Posts/FormPosts';
 
 
 // Pages
@@ -61,6 +64,26 @@ const routes = [
             {
                 path: "/admin/productos-anmat",
                 component: AdminProducts,
+                exact: true
+            },
+            {
+                path: "/admin/forum-threads",
+                component: AdminThreads,
+                exact: true
+            },
+            {
+                path: "/admin/forum-threads/form",
+                component: AdminThreadsForm,
+                exact: true
+            },
+            {
+                path: "/admin/forum-post/:id",
+                component: AdminPosts,
+                exact: true
+            },
+            {
+                path: "/admin/forum-post/:id/form",
+                component: AdminPostsForm,
                 exact: true
             },
             {

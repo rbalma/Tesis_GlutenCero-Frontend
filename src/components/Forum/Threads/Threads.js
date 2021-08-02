@@ -22,7 +22,7 @@ export default function Threads() {
   }]);
 
   useEffect(() => {
-    getThreadsApi()
+    getThreadsApi(10, 1)
       .then((response) => {
         if (response.ok) {
           setThreads(response.threads.docs);
