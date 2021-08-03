@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { List, Button, Tooltip, Modal as ModalAntd, notification } from "antd";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import Modal from "../../../../Modal";
-import FormThreads from '../FormThreads/FormThreads';
 import { deleteThreadApi } from "../../../../../api/forum";
 import { getAccessTokenApi } from "../../../../../api/auth";
 import { convertDate } from '../../../../../utils/convertDate';
@@ -16,9 +14,6 @@ const { confirm } = ModalAntd;
 export default function ListThreads(props) {
 
     const {notices, setReloadNotices} = props;
-    const [isVisibleModal, setIsVisibleModal] = useState(false);
-    const [modalTitle, setModalTitle] = useState("");
-    const [modalContent, setModalContent] = useState(null);
 
     return (
       <>
@@ -31,33 +26,16 @@ export default function ListThreads(props) {
 
             <Threads
               notices={notices}
-              setIsVisibleModal={setIsVisibleModal}
-              setModalTitle={setModalTitle}
-              setModalContent={setModalContent}
               setReloadNotices={setReloadNotices}
             />
-
-          <Modal
-            title={modalTitle}
-            isVisible={isVisibleModal}
-            setIsVisible={setIsVisibleModal}
-          >
-            {modalContent}
-          </Modal>
         </div>
       </>
     );
 
 
     function Threads(props){
-        const { notices, setIsVisibleModal, setModalTitle, setModalContent, setReloadNotices } = props;
-    
-        const editNotice = notice => {
-            setIsVisibleModal(true);
-            setModalTitle(`Editar ${notice.title}`);
-            setModalContent(<FormThreads threadData={notice} setIsVisibleModal={setIsVisibleModal} setReloadNotices={setReloadNotices} />);
-        }
-    
+        const { notices, setReloadNotices } = props;
+        
         return (
             <>
             <List
@@ -67,7 +45,6 @@ export default function ListThreads(props) {
             renderItem={notice => (
               <Thread
                 notice={notice}
-                editNotice={editNotice}
                 setReloadNotices={setReloadNotices}
               />
             )}
@@ -78,7 +55,7 @@ export default function ListThreads(props) {
     
     
     function Thread (props) {
-        const { notice, editNotice, setReloadNotices } = props;
+        const { notice, setReloadNotices } = props;
 
         const newDate = convertDate(notice.created);
         const user = notice.user;
@@ -121,8 +98,8 @@ export default function ListThreads(props) {
                     </Button>
                     </Tooltip>,
                     <Tooltip title="Editar Hilo">
-                    <Button type="primary" onClick={() => editNotice(notice)} >
-                        <FaEdit />
+                    <Button type="primary">
+                        <Link to={`/admin/forum-threads/form/${notice._id}`} ><FaEdit /></Link>
                     </Button>
                     </Tooltip>,
                     <Tooltip title="Eliminar Hilo">

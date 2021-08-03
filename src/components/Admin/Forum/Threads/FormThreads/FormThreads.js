@@ -3,11 +3,14 @@ import RichTextEditor from "../../../../../components/TextEditor/RichTextEditor.
 import { message } from "antd";
 import { Redirect } from "react-router";
 import useAuth from "../../../../../hooks/useAuth";
-import { addThreadApi, updateThreadApi } from "../../../../../api/forum.js";
+import { addThreadApi, updateThreadApi, getThreadByIdApi } from "../../../../../api/forum.js";
 import { getAccessTokenApi } from "../../../../../api/auth.js";
 
 export default function FormThreads(props) {
-  const { threadData, setIsVisibleModal, setReloadNotices } = props;
+
+  const { id } = props.match.params;
+
+  const { history } = props;
 
   const { user } = useAuth();
   const [thread, setThread] = useState({
@@ -19,14 +22,22 @@ export default function FormThreads(props) {
   const { title, content } = thread;
 
   useEffect(() => {
-    if (threadData) {
-      setThread({
-        title: threadData.title,
-        content: threadData.content,
-        status: threadData.status,
-      });
+    if (id) {
+      getThreadByIdApi(id).then( res => {
+        if(res.ok){
+          setThread({
+            title: res.thread.title,
+            content: res.thread.content,
+            status: res.thread.status,
+          });
+        } else {
+          message.error(res.msg);
+        }
+      }).catch(err => {
+        console.log(err);
+      })
     }
-  }, [threadData]);
+  }, [id]);
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
@@ -38,8 +49,8 @@ export default function FormThreads(props) {
 
     const accessToken = getAccessTokenApi();
 
-    if (threadData) {
-      updateThreadApi(accessToken, threadData._id, thread)
+    if (id) {
+      updateThreadApi(accessToken, id, thread)
         .then((res) => {
           if (res.ok) {
             message.loading({
@@ -52,8 +63,7 @@ export default function FormThreads(props) {
                 key: "updatable",
                 duration: 2,
               });
-              setReloadNotices(true);
-              setIsVisibleModal(false);
+              history.push('/admin/forum-threads');
             }, 1000);
           } else {
             message.error(res.msg);
@@ -73,7 +83,7 @@ export default function FormThreads(props) {
                 key: "updatable",
                 duration: 2,
               });
-              window.location.href = "/admin/forum-threads";
+              history.push('/admin/forum-threads');
             }, 1000);
           } else {
             message.error(res.message);
@@ -105,7 +115,7 @@ export default function FormThreads(props) {
               />
             </div>
 
-            {threadData ? (
+            {id ? (
               <div
                 className="col-12 col-xl-8 offset-xl-2"
                 style={{ display: "block", marginTop: "1rem" }}

@@ -77,6 +77,11 @@ const routes = [
                 exact: true
             },
             {
+                path: "/admin/forum-threads/form/:id",
+                component: AdminThreadsForm,
+                exact: true
+            },
+            {
                 path: "/admin/forum-post/:id",
                 component: AdminPosts,
                 exact: true
