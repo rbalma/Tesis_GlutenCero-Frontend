@@ -13,7 +13,7 @@ function Threads(props) {
   const { page = 1 } = queryString.parse(location.search);
 
   useEffect(() => {
-    getThreadsApi(5, page)
+    getThreadsApi(6, page)
       .then((response) => {
         if (response.ok) {
           setNotices(response.threads);

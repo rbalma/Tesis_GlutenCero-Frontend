@@ -254,14 +254,13 @@ export function deletePostApi(token, postId) {
 }
 
 
-export function getPostByIdApi(token, postId) {
+export function getPostByIdApi(postId) {
     const url = `${basePath}/${apiVersion}/posts/${postId}`;
   
     const params = {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: token,
       },
     };
   

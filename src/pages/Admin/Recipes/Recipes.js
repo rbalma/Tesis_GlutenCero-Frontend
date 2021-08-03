@@ -15,7 +15,7 @@ export default function Recipes(props) {
     const { page = 1 } = queryString.parse(location.search);
 
     useEffect(() => {
-        getRecipesActiveApi(true, 'all', 'desc', '', 5, page).then(response => {
+        getRecipesActiveApi(true, 'all', 'desc', '', 6, page).then(response => {
             if(response?.code !== 200){
                 notification["warning"]({
                     message: response.message

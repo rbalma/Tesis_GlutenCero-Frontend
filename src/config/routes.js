@@ -12,7 +12,7 @@ import AdminProducts from '../pages/Admin/Products';
 import AdminThreads from '../pages/Admin/Forum/Threads';
 import AdminThreadsForm from '../components/Admin/Forum/Threads/FormThreads';
 import AdminPosts from '../pages/Admin/Forum/Posts';
-import AdminPostsForm from '../components/Admin/Forum/Posts/FormPosts';
+import AdminPostsForm from '../components/Admin/Forum/posts/FormPosts';
 
 
 // Pages
@@ -88,6 +88,11 @@ const routes = [
             },
             {
                 path: "/admin/forum-post/:id/form",
+                component: AdminPostsForm,
+                exact: true
+            },
+            {
+                path: "/admin/forum-post/:id/form/:idPost",
                 component: AdminPostsForm,
                 exact: true
             },

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RichTextEditor from "../../../../../components/TextEditor/RichTextEditor.js";
 import { message } from "antd";
-import { Redirect } from "react-router";
-import useAuth from "../../../../../hooks/useAuth";
 import { addThreadApi, updateThreadApi, getThreadByIdApi } from "../../../../../api/forum.js";
 import { getAccessTokenApi } from "../../../../../api/auth.js";
 
@@ -12,7 +10,6 @@ export default function FormThreads(props) {
 
   const { history } = props;
 
-  const { user } = useAuth();
   const [thread, setThread] = useState({
     title: "",
     content: "",
@@ -95,9 +92,7 @@ export default function FormThreads(props) {
     }
   };
 
-  if (!user) {
-    return <Redirect to="/login" />;
-  } else {
+
     return (
       <div className="container">
         <div className="row">
@@ -157,5 +152,4 @@ export default function FormThreads(props) {
         </div>
       </div>
     );
-  }
 }

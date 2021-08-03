@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import ListPosts from "../../../../components/Admin/Forum/Posts/ListPosts";
+import ListPosts from "../../../../components/Admin/Forum/posts/ListPosts";
 import { getPostsApi } from "../../../../api/forum";
 import { withRouter } from 'react-router-dom';
 import queryString  from "query-string";
@@ -17,7 +17,7 @@ function Posts(props) {
     const { page = 1 } = queryString.parse(location.search);
 
     useEffect(() => {
-        getPostsApi(id, 5, page).then(response => {
+        getPostsApi(id, 6, page).then(response => {
             if(response.ok){
                 setNotices(response.posts); 
             } else {                
@@ -36,7 +36,7 @@ function Posts(props) {
 
     return (
         <>
-        <ListPosts notices={notices} setReloadNotices={setReloadNotices} />   
+        <ListPosts notices={notices} threadId={id} setReloadNotices={setReloadNotices} />   
         <Pagination notices={notices} location={location} history={history} /> 
         </>
     )

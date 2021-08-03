@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { List, Button, Tooltip, Modal as ModalAntd, notification } from "antd";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import Modal from "../../../../Modal";
-import FormPosts from "../FormPosts";
 import { deletePostApi } from "../../../../../api/forum";
 import { getAccessTokenApi } from "../../../../../api/auth";
 import { convertDate } from '../../../../../utils/convertDate';
@@ -13,50 +11,30 @@ import "../../ListForum.scss";
 
 const { confirm } = ModalAntd;
 
-export default function ListThreads(props) {
+export default function ListPosts(props) {
 
-    const {notices, setReloadNotices} = props;
-    const [isVisibleModal, setIsVisibleModal] = useState(false);
-    const [modalTitle, setModalTitle] = useState("");
-    const [modalContent, setModalContent] = useState(null);
+    const {notices, setReloadNotices, threadId} = props;
+
 
     return (
       <>
         <div className="list-users">
           <div className="list-users__header">
             <Button type="primary" className="btn-submit">
-              <Link to={"/admin/forum-post/:id/form"}> Nuevo Post </Link>
+              <Link to={`/admin/forum-post/${threadId}/form`}> Nuevo Post </Link>
             </Button>
           </div>
-
             <Threads
               notices={notices}
-              setIsVisibleModal={setIsVisibleModal}
-              setModalTitle={setModalTitle}
-              setModalContent={setModalContent}
               setReloadNotices={setReloadNotices}
             />
-
-          <Modal
-            title={modalTitle}
-            isVisible={isVisibleModal}
-            setIsVisible={setIsVisibleModal}
-          >
-            {modalContent}
-          </Modal>
         </div>
       </>
     );
 
 
     function Threads(props){
-        const { notices, setIsVisibleModal, setModalTitle, setModalContent, setReloadNotices } = props;
-    
-        const editNotice = notice => {
-            setIsVisibleModal(true);
-            setModalTitle(`Editar ${notice.title}`);
-            setModalContent(<FormPosts notice={notice} setIsVisibleModal={setIsVisibleModal} setReloadNotices={setReloadNotices} />);
-        }
+        const { notices, setReloadNotices } = props;
     
         return (
             <>
@@ -67,7 +45,6 @@ export default function ListThreads(props) {
             renderItem={notice => (
               <Thread
                 notice={notice}
-                editNotice={editNotice}
                 setReloadNotices={setReloadNotices}
               />
             )}
@@ -78,7 +55,7 @@ export default function ListThreads(props) {
     
     
     function Thread (props) {
-        const { notice, editNotice, setReloadNotices } = props;
+        const { notice, setReloadNotices } = props;
 
         const newDate = convertDate(notice.created);
         const user = notice.user;
@@ -116,8 +93,8 @@ export default function ListThreads(props) {
             <List.Item
                 actions={[
                     <Tooltip title="Editar Post">
-                    <Button type="primary" onClick={() => editNotice(notice)} >
-                        <FaEdit />
+                    <Button type="primary">
+                        <Link to={`/admin/forum-post/${threadId}/form/${notice._id}`}><FaEdit /></Link>
                     </Button>
                     </Tooltip>,
                     <Tooltip title="Eliminar Post">
